@@ -1,0 +1,21 @@
+{
+    "GLOBAL": {
+        "USER" : "ROOT",
+        "TIME": "DEFAULT"
+    },
+
+    "SHARE": {
+        "ID" : "001",
+        "NAME" : "Share_Teste",
+        "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
+        "AUTHOR" : "LBMELLO",
+        "ENVIROMENT" : "LINUX",
+        "SYNC_LEVEL" : "0",
+        "NODE" : "MASTER",
+        "SOURCE" : "/home/share/sync/*",
+        "USER" : "VAGRANT",
+        "IP" : "192.168.15.10",
+        "DESTINY" : "/tmp/rsync/",
+        "TIME" : "DEFAULT"
+    }
+}

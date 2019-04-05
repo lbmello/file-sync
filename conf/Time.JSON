@@ -1,0 +1,8 @@
+{
+    "DEFAULT":{
+        "SCHEDULE": "MTWTF",
+        "TIME_UNITY":  "MI",
+        "FREQUENCY": "15"
+    }
+}
+

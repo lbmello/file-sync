@@ -1,0 +1,51 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.provision :shell, inline: "echo VM Criada com sucesso!"
+
+  config.vm.define :files do |files|
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.hostname = "SRV-FILE"
+  config.vm.network "public_network", use_dhcp_assigned_default_route: true
+  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/'
+# config.vm.provision "shell", path: "python_install.sh"
+  end
+  
+  config.vm.define :client01 do |client01|
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.hostname = "CLIENT01"
+  config.vm.network "public_network", use_dhcp_assigned_default_route: true
+  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/'
+# config.vm.provision "shell", path: "python_install.sh"
+    end
+#
+#  config.vm.define :debian2 do |debian2|
+#  config.vm.box = "debian/jessie64"
+#  config.vm.hostname = "debian02"
+#  config.vm.network "public_network", use_dhcp_assigned_default_route: true
+#  config.vm.synced_folder "/home/lucas/Documentos/filesync", "/home/fs"
+#  end
+# 
+#  config.vm.define :debian3 do |debian3|
+#  config.vm.box = "debian/jessie64"
+#  config.vm.hostname = "debian03"
+#  config.vm.network "public_network", use_dhcp_assigned_default_route: true
+#   config.vm.synced_folder "/home/lucas/Documentos/filesync", "/home/fs"
+#   end
+# 
+#   config.vm.define :debian4 do |debian4|
+#   config.vm.box = "debian/jessie64"
+#   config.vm.hostname = "debian04"
+#   config.vm.network "public_network", use_dhcp_assigned_default_route: true
+#   config.vm.synced_folder "/home/lucas/Documentos/filesync", "/home/fs"
+#   end
+#   
+#   config.vm.define :debian5 do |debian5|
+#   config.vm.box = "debian/jessie64"
+#   config.vm.hostname = "debian05"
+#   config.vm.network "public_network", use_dhcp_assigned_default_route: true
+#   config.vm.synced_folder "/home/lucas/Documentos/filesync", "/home/fs"
+#   end
+# 
+end
