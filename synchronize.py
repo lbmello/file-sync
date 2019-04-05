@@ -1,0 +1,1 @@
+# Arquivo principal do projeto onde as demais funções são executadas em sequência.
