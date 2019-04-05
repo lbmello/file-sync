@@ -4,63 +4,63 @@ import json
 
 # FUNCTION THAT READ THE FILE conf\Config.JSON AND RETURN THE VALUES
 def json_config_read():
-    
-    # READ THE FILE conf\Config.JSON
+            
+#   READ THE FILE conf\Config.JSON
+
     with open('conf\Config.JSON', 'r') as file:
         config = json.load(file)
         
-    # RECEIVE THE VALIES FROM "GLOBAL" ITEM IN Config.JSON FILE
+#   RECEIVE THE VALIES FROM "GLOBAL" ITEM IN Config.JSON FILE
     global_user = config["GLOBAL"]["USER"]
+    return global_user
     
     global_schedule = config["GLOBAL"]["SCHEDULE"]
+    return global_schedule 
     
     global_frequency = config["GLOBAL"]["FREQUENCY"]
+    return global_frequency
     
       
     # RECEIVE THE VALUES FROM "SHARE" ITEM IN Config.JSON FILE    
-    share_id = config["SHARE"]["ID"]
+    shareId = config["SHARE"]["ID"]
+    return shareId
     
     share_name = config["SHARE"]["NAME"]
+    return share_name
     
     share_description = config["SHARE"]["DESCRIPTION"]
+    return share_description
     
     share_author = config["SHARE"]["AUTHOR"]
+    return share_author
     
     share_enviroment = config["SHARE"]["ENVIROMENT"]
+    return share_enviroment
     
     share_sync_level = config["SHARE"]["SYNC_LEVEL"]
+    return share_sync_level
     
     share_node = config["SHARE"]["NODE"]
+    return share_node
     
     share_source = config["SHARE"]["SOURCE"]
+    return share_source
     
     share_user = config["SHARE"]["USER"]
+    return share_user
     
     share_ip = config["SHARE"]["IP"]
+    return share_ip
     
     share_destiny = config["SHARE"]["DESTINY"]
+    return share_destiny
     
     share_time = config["SHARE"]["TIME"]
-    
-    return(global_user)
-    return(global_schedule)
-    return(global_frequency)
-
-    return(share_id)
-    return(share_name)
-    return(share_description)
-    return(share_author)
-    return(share_enviroment)
-    return(share_sync_level)
-    return(share_node)
-    return(share_source)
-    return(share_user)
-    return(share_ip)
-    return(share_destiny)
-    
-    # Criar leitura do arquivo Time.JSON 
-    #return(time_schedule)
-    #return(time_frequency)
+    return share_time
+        
+# Criar leitura do arquivo Time.JSON 
+#return(time_schedule)
+#return(time_frequency)
     
 
 # FUNCTION THAT READ THE FILE conf\Hosts.JSON AND RETURN THE VALUES
