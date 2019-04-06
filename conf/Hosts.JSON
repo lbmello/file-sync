@@ -3,17 +3,20 @@
         "SRV-FILE":{    
             "IP": "192",
             "DESCRIPTION": "SERVIDOR DE ARQUIVOS NO SYNC LEVEL 0.",
-            "UID": "0001"
+            "UID": "0001",
+            "EDGE": ""
         },
         "CLIENT01":{
             "IP": "192",
             "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 1",
-            "UID": "0002"
+            "UID": "0002",
+            "EDGE": ""
         },
         "CLIENT02":{
             "IP": "192",
             "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 1",
-            "UID": "0003"
+            "UID": "0003",
+            "EDGE": ""
         }
     },
 
