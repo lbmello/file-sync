@@ -16,6 +16,6 @@
         "USER" : "VAGRANT",
         "IP" : "192.168.15.10",
         "DESTINY" : "/tmp/rsync/",
-        "TIME" : "DEFAULT"
+        "TIME" : "TIME_LAB"
     }
 }

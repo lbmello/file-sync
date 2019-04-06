@@ -3,6 +3,12 @@
         "SCHEDULE": "MTWTF",
         "TIME_UNITY":  "MI",
         "FREQUENCY": "15"
+    },
+
+    "TIME_LAB":{
+        "SCHEDULE": "MTWTFSS",
+        "TIME_UNITY":  "MI",
+        "FREQUENCY": "5"
     }
 }
 
