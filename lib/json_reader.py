@@ -4,13 +4,12 @@ import json
 
 # FUNCTION THAT READ THE FILE conf\Config.JSON AND RETURN THE VALUES
 def json_config_read():
-            
-#   READ THE FILE conf\Config.JSON
 
+#   READ THE FILE Config.JSON
     with open('conf\Config.JSON', 'r') as file:
-        config = json.load(file)
-        
-#   RECEIVE THE VALIES FROM "GLOBAL" ITEM IN Config.JSON FILE
+        config = json.load(file)  
+             
+#   RETURN THE VALUES FROM "GLOBAL" ITEM IN Config.JSON FILE
     global_user = config["GLOBAL"]["USER"]
     return global_user
     
@@ -20,8 +19,7 @@ def json_config_read():
     global_frequency = config["GLOBAL"]["FREQUENCY"]
     return global_frequency
     
-      
-    # RECEIVE THE VALUES FROM "SHARE" ITEM IN Config.JSON FILE    
+    # RETURN THE VALUES FROM "SHARE" ITEM IN Config.JSON FILE    
     shareId = config["SHARE"]["ID"]
     return shareId
     
@@ -57,10 +55,6 @@ def json_config_read():
     
     share_time = config["SHARE"]["TIME"]
     return share_time
-        
-# Criar leitura do arquivo Time.JSON 
-#return(time_schedule)
-#return(time_frequency)
     
 
 # FUNCTION THAT READ THE FILE conf\Hosts.JSON AND RETURN THE VALUES
@@ -74,7 +68,9 @@ def json_hosts_read():
     json_nodes = (hosts["NODES"])
     #json_syncLevel = (hosts["SYNC_LEVEL"])
     json_level0 = (hosts["SYNC_LEVEL"]["LEVEL_0"])
+    
     json_level1 = (hosts["SYNC_LEVEL"]["LEVEL_1"])
+    
     json_level2 = (hosts["SYNC_LEVEL"]["LEVEL_2"])
     
 #   RETURN THE NAME OF ALL HOSTS USING THE LIST NODES
@@ -96,5 +92,16 @@ def json_hosts_read():
     level2 = []
     for keys, values in json_level2.items():
         level2.append(values)
-       
+
+# FUNCTION THAT READ THE FILE conf\Time.JSON AND RETURN THE VALUES
+def json_time_read():
+    with open('conf\Time.JSON', 'r') as file:
+        time = json.load(file)
+
+    time_default = (time["DEFAULT"])
+    return time_default
+
+    time_lab = (time["LAB"])
+    return time_lab
+     
 json_hosts_read()
