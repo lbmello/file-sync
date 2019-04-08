@@ -5,7 +5,7 @@
         "FREQUENCY": "15"
     },
 
-    "TIME_LAB":{
+    "LAB":{
         "SCHEDULE": "MTWTFSS",
         "TIME_UNITY":  "MI",
         "FREQUENCY": "5"
