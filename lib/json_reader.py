@@ -93,8 +93,6 @@ def json_global_read():
 
         global_user = config["GLOBAL"]["USER"]
         
-        global_schedule = config["GLOBAL"]["SCHEDULE"]
+        global_time = config["GLOBAL"]["TIME"]
         
-        global_frequency = config["GLOBAL"]["FREQUENCY"]
-        
-        return (global_user, global_schedule, global_frequency)
+        return (global_user, global_time)
