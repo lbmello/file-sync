@@ -68,7 +68,7 @@ def json_hosts_read():
         for keys, values in json_level2.items():
             level2.append(values)
 
-
+        return(json_nodes, json_level0, json_level1, json_level2, nodes, level0, level1, level2)
 
 
 # FUNCTION THAT READ THE FILE conf\Time.JSON AND RETURN THE VALUES
