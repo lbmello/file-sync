@@ -2,38 +2,34 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.provision :shell, inline: "echo VM Criada com sucesso!"
+  config.vm.provision :shell, inline: "echo VM Criada com sucesso!", disabled: true
 
   # MÁQUINA DO SYNC_GROUP 0
   config.vm.define :files do |files|
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "SRV-FILE"
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true
-  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/'
+  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
   end
   
   # MÁQUINA DO SYNC_GROUP 1
   config.vm.define :client01 do |client01|
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "CLIENT01"
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true
-  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/'
+  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
   end
 
   # MÁQUINA DO SYNC_GROUP 1
   config.vm.define :client02 do |client02|
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "CLIENT02"
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true
-  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/'
+  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
   end
 
    # MÁQUINA DO SYNC_GROUP 2
   config.vm.define :client03 do |client03|
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "CLIENT03"
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true
-  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/'
+  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
   end
 
 end
