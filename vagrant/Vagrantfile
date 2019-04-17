@@ -2,50 +2,38 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.provision :shell, inline: "echo VM Criada com sucesso!", disabled: true
+  config.vm.provision :shell, inline: "echo VM Criada com sucesso!"
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 256
+    vb.cpus = 1
+  end
 
-  config.vm.define :files do |files|
+  config.vm.define :files do |srvfile|
   config.vm.box = "ubuntu/trusty64"
-  v.name = "SRV-FILE"
+  #virtualbox.name = "SRV-FILE"
   config.vm.hostname = "SRV-FILE"
   config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
-  config.vm.provider "virtualbox" do |v|
-    v.memory = 512
-    v.cpus = 1
-  end
   end
   
   config.vm.define :client01 do |client01|
   config.vm.box = "ubuntu/trusty64"
-  v.name = "CLIENT01"
+  #v.name = "CLIENT01"
   config.vm.hostname = "CLIENT01"
   config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
-  config.vm.provider "virtualbox" do |v|
-    v.memory = 256
-    v.cpus = 0.5
-  end
   end
 
   config.vm.define :client02 do |client02|
   config.vm.box = "ubuntu/trusty64"
-  v.name = "CLIENT02"
+  #v.name = "CLIENT02"
   config.vm.hostname = "CLIENT02"
   config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
-  config.vm.provider "virtualbox" do |v|
-    v.memory = 256
-    v.cpus = 0.5
-  end
   end
 
   config.vm.define :client03 do |client03|
   config.vm.box = "ubuntu/trusty64"
-  v.name = "CLIENT03"
+  #v.name = "CLIENT03"
   config.vm.hostname = "CLIENT03"
   config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
-  config.vm.provider "virtualbox" do |v|
-    v.memory = 256
-    v.cpus = 0.5
-  end
   end
 
 end
