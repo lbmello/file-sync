@@ -1,1 +1,0 @@
-{"virtualbox":{"/home/share/":{"guestpath":"/home/share","hostpath":"C:/Users/Lucas/Documents/FileSync/share","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/Lucas/Documents/FileSync/vagrant","disabled":false,"__vagrantfile":true}}}
