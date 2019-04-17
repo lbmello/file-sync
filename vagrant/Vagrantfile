@@ -7,6 +7,7 @@ Vagrant.configure("2") do |config|
   # MÁQUINA DO SYNC_GROUP 0
   config.vm.define :files do |files|
   config.vm.box = "ubuntu/trusty64"
+  v.name = "SRV-FILE"
   config.vm.hostname = "SRV-FILE"
   config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
   end
@@ -14,6 +15,7 @@ Vagrant.configure("2") do |config|
   # MÁQUINA DO SYNC_GROUP 1
   config.vm.define :client01 do |client01|
   config.vm.box = "ubuntu/trusty64"
+  v.name = "CLIENT01"
   config.vm.hostname = "CLIENT01"
   config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
   end
@@ -21,6 +23,7 @@ Vagrant.configure("2") do |config|
   # MÁQUINA DO SYNC_GROUP 1
   config.vm.define :client02 do |client02|
   config.vm.box = "ubuntu/trusty64"
+  v.name = "CLIENT02"
   config.vm.hostname = "CLIENT02"
   config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
   end
@@ -28,6 +31,7 @@ Vagrant.configure("2") do |config|
    # MÁQUINA DO SYNC_GROUP 2
   config.vm.define :client03 do |client03|
   config.vm.box = "ubuntu/trusty64"
+  v.name = "CLIENT03"
   config.vm.hostname = "CLIENT03"
   config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
   end
