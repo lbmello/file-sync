@@ -24,14 +24,12 @@ def json_config_read():
         share_source = config["SHARE"]["SOURCE"]
         
         share_user = config["SHARE"]["USER"]
-        
-        share_ip = config["SHARE"]["IP"]
-        
+                
         share_destiny = config["SHARE"]["DESTINY"]
         
         share_time = config["SHARE"]["TIME"]
         
-        return (share_id, share_name, share_description, share_author, share_enviroment, share_sync_level, share_node, share_source, share_user, share_ip, share_destiny, share_time)
+        return (share_id, share_name, share_description, share_author, share_enviroment, share_sync_level, share_node, share_source, share_user, share_destiny, share_time)
     
 
 # FUNCTION THAT READ THE FILE conf\Hosts.JSON AND RETURN THE VALUES
