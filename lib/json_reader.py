@@ -2,9 +2,9 @@
 
 import json
 
-# FUNCTION THAT READ READ AND RETURN VALUES FROM THE FILE conf\Config.JSON
+# FUNCTION THAT READ READ AND RETURN "SHARE" VALUES FROM THE FILE conf\Config.JSON
 def json_config_read():      
-    with open('conf\Config.JSON', 'r') as file:
+    with open('conf/Config.JSON', 'r') as file:
         config = json.load(file)
       
         share_id = config["SHARE"]["ID"]
@@ -34,7 +34,7 @@ def json_config_read():
 
 # FUNCTION THAT READ THE FILE conf\Hosts.JSON AND RETURN THE VALUES
 def json_hosts_read():
-        with open('conf\Hosts.JSON', 'r') as file:
+        with open('conf/Hosts.JSON', 'r') as file:
                 hosts = json.load(file)
 
         #PART THE VALUES OF VARIABLES IN EACH ITEM OS JSON FILE     
@@ -68,10 +68,9 @@ def json_hosts_read():
 
         return(json_nodes, json_level0, json_level1, json_level2, nodes, level0, level1, level2)
 
-
 # FUNCTION THAT READ THE FILE conf\Time.JSON AND RETURN THE VALUES
 def json_time_read():
-        with open('conf\Time.JSON', 'r') as file:
+        with open('conf/Time.JSON', 'r') as file:
                 time = json.load(file)
 
         time_default = (time["DEFAULT"])
@@ -86,7 +85,7 @@ def json_time_read():
 # FUNCTION THAT RETURN THE VALUES FROM "GLOBAL" ITEM IN Config.JSON FILE
 def json_global_read():
 
-        with open('conf\Config.JSON', 'r') as file:
+        with open('conf/Config.JSON', 'r') as file:
                 config = json.load(file)        
 
         global_user = config["GLOBAL"]["USER"]
