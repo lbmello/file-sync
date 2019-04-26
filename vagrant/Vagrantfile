@@ -1,6 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+syncedFolderConf = false
+syncedFolderOrigin = "C:/Users/Lucas/Documents/FileSync/share"
+syncedFolderDestiny = "/home/share/"
+vmSO = "ubuntu/trusty64"
+
 Vagrant.configure("2") do |config|
   config.vm.provision :shell, inline: "echo VM Criada com sucesso!"
 
@@ -10,9 +15,9 @@ Vagrant.configure("2") do |config|
       vb.cpus = 1
       vb.name = "SRV-FILE"
     end
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = vmSO
   config.vm.hostname = "SRV-FILE"
-  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
+  config.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
   end
   
   config.vm.define :client01 do |client01|
@@ -22,8 +27,9 @@ Vagrant.configure("2") do |config|
       vb.name = "CLIENT01"
       vb.linked_clone = true
     end
+  config.vm.box = vmSO
   config.vm.hostname = "CLIENT01"
-  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
+  config.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
   end
 
   config.vm.define :client02 do |client02|
@@ -33,8 +39,9 @@ Vagrant.configure("2") do |config|
       vb.name = "CLIENT02"
       vb.linked_clone = true
     end
+  config.vm.box = vmSO
   config.vm.hostname = "CLIENT02"
-  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
+  config.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
   end
 
   config.vm.define :client03 do |client03|
@@ -44,9 +51,10 @@ Vagrant.configure("2") do |config|
       vb.name = "CLIENT03"
       vb.linked_clone = true
     end
+  config.vm.box = vmSO
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "CLIENT03"
-  config.vm.synced_folder 'C:\Users\Lucas\Documents\FileSync\share', '/home/share/', disabled: true
+  config.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
   end
 
 end
