@@ -66,7 +66,14 @@ def json_hosts_read():
         for keys, values in json_level2.items():
             level2.append(values)
 
-        return(json_nodes, json_level0, json_level1, json_level2, nodes, level0, level1, level2)
+        # RETURN THE IP ADDRESSES
+        ips = json_nodes.get('CLIENT01')
+        ips = ips.get('IP')
+
+        # ESCREVER LÓGICA DE LEITURA QUE ARMAZENE TODOS OS NOMES DE HOST EM UM ARRAY. DEPOIS FAZER UM FOR NESSE ARRAY LENDO CASA POSIÇÃO DA CONFIGURAÇÃO DE HOST 
+        # E ARMAZENANDO OS VALORES EM OUTRO ARRAY COM APPEND. CONSULTAR COMO RETORNAR ESSES VALORES NA FUNÇÃO
+
+        return(json_nodes, json_level0, json_level1, json_level2, nodes, level0, level1, level2, ips)
 
 # FUNCTION THAT READ THE FILE conf\Time.JSON AND RETURN THE VALUES
 def json_time_read():
