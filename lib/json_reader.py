@@ -67,13 +67,35 @@ def json_hosts_read():
             level2.append(values)
 
         # RETURN THE IP ADDRESSES
-        ips = json_nodes.get('CLIENT01')
-        ips = ips.get('IP')
+        nodesKeys = []
+        ip = []
+        description = []
+        uid = []
+        edge = []
+        
+        # READ THE NODES AND PUT THEM IN A LIST
+        nodes_keys = json_nodes.keys()
+        for i in range (len(nodes_keys)):
+                temp_var = list(nodes_keys)[i]
+                nodesKeys.append(temp_var)
 
-        # ESCREVER LÓGICA DE LEITURA QUE ARMAZENE TODOS OS NOMES DE HOST EM UM ARRAY. DEPOIS FAZER UM FOR NESSE ARRAY LENDO CASA POSIÇÃO DA CONFIGURAÇÃO DE HOST 
-        # E ARMAZENANDO OS VALORES EM OUTRO ARRAY COM APPEND. CONSULTAR COMO RETORNAR ESSES VALORES NA FUNÇÃO
+        # READ THE NODES ITEMS
+        for i in range (len(nodesKeys)):
+                # IP
+                hostsIp = (hosts["NODES"][nodesKeys[i]]["IP"])
+                ip.append(hostsIp)
+                # DESCRIPTION
+                hostDescription = (hosts["NODES"][nodesKeys[i]]["DESCRIPTION"])
+                description.append(hostDescription)
+                # UID
+                hostUid = (hosts["NODES"][nodesKeys[i]]["UID"])
+                uid.append(hostUid)
+                # EDGE
+                hostEdge = (hosts["NODES"][nodesKeys[i]]["EDGE"])
+                edge.append(hostEdge)
 
-        return(json_nodes, json_level0, json_level1, json_level2, nodes, level0, level1, level2, ips)
+        return(json_nodes, json_level0, json_level1, json_level2, nodes, level0, level1, level2, ip, description, uid, edge)
+        
 
 # FUNCTION THAT READ THE FILE conf\Time.JSON AND RETURN THE VALUES
 def json_time_read():
