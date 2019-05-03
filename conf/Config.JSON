@@ -13,7 +13,7 @@
         "SYNC_LEVEL" : "0",
         "NODE" : "MASTER",
         "SOURCE" : "/home/share/sync/*",
-        "USER" : "VAGRANT",
+        "USER" : "vagrant",
         "DESTINY" : "/tmp/rsync/",
         "TIME" : "TIME_LAB"
     }
