@@ -1,60 +1,43 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-syncedFolderConf = false
-syncedFolderOrigin = "C:/Users/Lucas/Documents/FileSync/share"
-syncedFolderDestiny = "/home/share/"
+# Configuração geral da VM
 vmSO = "ubuntu/trusty64"
+ram = 256
+
+# Configuração da pasta sincronizada
+syncedFolderConf = false
+syncedFolderOrigin = "C:/Users/Lucas/Documents/FileSync"
+syncedFolderDestiny = "/home/filesync/"
+
+# Hosts da rede
+hosts = [
+  { :hostname => 'SRV-FILE', :ip => '172.10.0.10', :box => vmSO },
+  { :hostname => 'CLIENT02', :ip => '172.10.0.2', :box => vmSO },
+  { :hostname => 'CLIENT03', :ip => '172.10.0.3', :box => vmSO },
+  { :hostname => 'CLIENT04', :ip => '172.10.0.4', :box => vmSO },
+  { :hostname => 'CLIENT05', :ip => '172.10.0.5', :box => vmSO },
+  { :hostname => 'CLIENT06', :ip => '172.10.0.6', :box => vmSO },
+  { :hostname => 'CLIENT07', :ip => '172.10.0.7', :box => vmSO },
+  { :hostname => 'CLIENT08', :ip => '172.10.0.8', :box => vmSO },
+  { :hostname => 'CLIENT09', :ip => '172.10.0.9', :box => vmSO },
+]
 
 Vagrant.configure("2") do |config|
-  config.vm.provision :shell, inline: "echo VM Criada com sucesso!"
-
-  config.vm.define :files do |srvfile|
-    config.vm.provider "virtualbox" do |vb|
-      vb.memory = 512
-      vb.cpus = 1
-      vb.name = "SRV-FILE"
+  hosts.each do |host|
+    config.vm.define host[:hostname] do |hostconfig|
+      hostconfig.vm.box = vmSO
+      hostconfig.vm.hostname = host[:hostname] + ".box"
+      hostconfig.vm.network :private_network, ip: host[:ip]
+      hostconfig.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
+      memory = host[:ram] ? host[:ram] : ram;
+      hostconfig.vm.provider :virtualbox do |vb|
+        vb.linked_clone = true
+        vb.name = host[:hostname]
+        vb.customize [
+          "modifyvm", :id,
+          "--cpuexecutioncap", "50"        ]
+      end
     end
-  config.vm.box = vmSO
-  config.vm.hostname = "SRV-FILE"
-  config.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
   end
-  
-  config.vm.define :client01 do |client01|
-    config.vm.provider "virtualbox" do |vb|
-      vb.memory = 256
-      vb.cpus = 1
-      vb.name = "CLIENT01"
-      vb.linked_clone = true
-    end
-  config.vm.box = vmSO
-  config.vm.hostname = "CLIENT01"
-  config.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
-  end
-
-  config.vm.define :client02 do |client02|
-    config.vm.provider "virtualbox" do |vb|
-      vb.memory = 256
-      vb.cpus = 1
-      vb.name = "CLIENT02"
-      vb.linked_clone = true
-    end
-  config.vm.box = vmSO
-  config.vm.hostname = "CLIENT02"
-  config.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
-  end
-
-  config.vm.define :client03 do |client03|
-    config.vm.provider "virtualbox" do |vb|
-      vb.memory = 256
-      vb.cpus = 1
-      vb.name = "CLIENT03"
-      vb.linked_clone = true
-    end
-  config.vm.box = vmSO
-  config.vm.box = "ubuntu/trusty64"
-  config.vm.hostname = "CLIENT03"
-  config.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
-  end
-
 end
