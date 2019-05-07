@@ -1,10 +1,19 @@
 # IMPORT JSON CONFIG FILE
 
 import json
+import os.path
+
+# RELATIVE PATH DECLARATION
+my_path = os.path.abspath(os.path.dirname(__file__))
+
+pathHost = os.path.join(my_path, "../conf/Hosts.JSON")
+pathConfig = os.path.join(my_path, "../conf/Config.JSON")
+pathTime = os.path.join(my_path, "../conf/Time.JSON")
+
 
 # FUNCTION THAT READ READ AND RETURN "SHARE" VALUES FROM THE FILE conf\Config.JSON
 def json_config_read():      
-    with open('conf/Config.JSON', 'r') as file:
+    with open(pathConfig, 'r') as file:
         config = json.load(file)
       
         share_id = config["SHARE"]["ID"]
@@ -34,7 +43,7 @@ def json_config_read():
 
 # FUNCTION THAT READ THE FILE conf\Hosts.JSON AND RETURN THE VALUES
 def json_hosts_read():
-        with open('conf/Hosts.JSON', 'r') as file:
+        with open(pathHost, 'r') as file:
                 hosts = json.load(file)
 
         #PART THE VALUES OF VARIABLES IN EACH ITEM OS JSON FILE     
@@ -99,7 +108,7 @@ def json_hosts_read():
 
 # FUNCTION THAT READ THE FILE conf\Time.JSON AND RETURN THE VALUES
 def json_time_read():
-        with open('conf/Time.JSON', 'r') as file:
+        with open(pathTime, 'r') as file:
                 time = json.load(file)
 
         time_default = (time["DEFAULT"])
@@ -107,14 +116,12 @@ def json_time_read():
         time_lab = (time["LAB"])
     
         return(time_default, time_lab)
-     
-     
-     
+
      
 # FUNCTION THAT RETURN THE VALUES FROM "GLOBAL" ITEM IN Config.JSON FILE
 def json_global_read():
 
-        with open('conf/Config.JSON', 'r') as file:
+        with open(pathConfig, 'r') as file:
                 config = json.load(file)        
 
         global_user = config["GLOBAL"]["USER"]

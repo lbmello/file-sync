@@ -3,7 +3,7 @@ from lib import copy as cp
 from lib import json_reader as jreader
 
 # READ THE TIME CONFIG
-time_default, time_lab = jreader.json_time_read()
+#time_default, time_lab = jreader.json_time_read()
 
 # READ THE GLOBAL CONFIG
 global_user, global_time = jreader.json_global_read()
