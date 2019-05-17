@@ -13,11 +13,11 @@ pathTime = os.path.join(my_path, "../conf/Time.JSON")
 
 # FUNCTION THAT READ READ AND RETURN self.share VALUES FROM THE FILE conf\Config.JSON
 class Config:
-        with open(pathConfig, 'r') as file:
-                config = json.load(file)
-
         def __init__(self, share):
                 self.share = share
+
+        with open(pathConfig, 'r') as file:
+                config = json.load(file)
 
         def id(self):
                 id = self.config[self.share]["ID"]
@@ -64,19 +64,30 @@ class Config:
                 return time
                 
 # FUNCTION THAT READ THE FILE conf\Hosts.JSON AND RETURN THE VALUES
-def json_hosts_read():
+class Hosts:
+        def __init__(self, hosts):
+                self.hosts = hosts
+
         with open(pathHost, 'r') as file:
                 hosts = json.load(file)
 
-        #PART THE VALUES OF VARIABLES IN EACH ITEM OS JSON FILE     
-        json_nodes = (hosts["NODES"])
-        #json_syncLevel = (hosts["SYNC_LEVEL"])
-        json_level0 = (hosts["SYNC_LEVEL"]["LEVEL_0"])
-    
-        json_level1 = (hosts["SYNC_LEVEL"]["LEVEL_1"])
-    
-        json_level2 = (hosts["SYNC_LEVEL"]["LEVEL_2"])
-    
+        def nodes(self):
+                #PART THE VALUES OF VARIABLES IN EACH ITEM OS JSON FILE     
+                nodes = (hosts["NODES"])
+                return nodes
+
+        def level0(self):   
+                level0 = (hosts["SYNC_LEVEL"]["LEVEL_0"])
+                return level0
+
+        def level1(self):
+                level1 = (hosts["SYNC_LEVEL"]["LEVEL_1"])
+                return level1
+
+        def level2(self):
+                level2 = (hosts["SYNC_LEVEL"]["LEVEL_2"])
+                return level2
+
         # RETURN THE NAME OF ALL HOSTS USING THE LIST NODES
         nodes = []
         for keys,values in json_nodes.items():
@@ -151,10 +162,3 @@ def json_global_read():
         global_time = config["GLOBAL"]["TIME"]
         
         return (global_user, global_time)
-
-
-
-
-share = Config("SHARE")
-print(share.time())
-
