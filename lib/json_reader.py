@@ -11,36 +11,58 @@ pathConfig = os.path.join(my_path, "../conf/Config.JSON")
 pathTime = os.path.join(my_path, "../conf/Time.JSON")
 
 
-# FUNCTION THAT READ READ AND RETURN "SHARE" VALUES FROM THE FILE conf\Config.JSON
-def json_config_read():      
-    with open(pathConfig, 'r') as file:
-        config = json.load(file)
-      
-        share_id = config["SHARE"]["ID"]
-    
-        share_name = config["SHARE"]["NAME"]
-        
-        share_description = config["SHARE"]["DESCRIPTION"]
-        
-        share_author = config["SHARE"]["AUTHOR"]
-        
-        share_enviroment = config["SHARE"]["ENVIROMENT"]
-        
-        share_sync_level = config["SHARE"]["SYNC_LEVEL"]
-        
-        share_node = config["SHARE"]["NODE"]
-        
-        share_source = config["SHARE"]["SOURCE"]
-        
-        share_user = config["SHARE"]["USER"]
-                
-        share_destiny = config["SHARE"]["DESTINY"]
-        
-        share_time = config["SHARE"]["TIME"]
-        
-        return (share_id, share_name, share_description, share_author, share_enviroment, share_sync_level, share_node, share_source, share_user, share_destiny, share_time)
-    
+# FUNCTION THAT READ READ AND RETURN self.share VALUES FROM THE FILE conf\Config.JSON
+class Config:
+        with open(pathConfig, 'r') as file:
+                config = json.load(file)
 
+        def __init__(self, share):
+                self.share = share
+
+        def id(self):
+                id = self.config[self.share]["ID"]
+                return id
+
+        def name(self):
+                name = self.config[self.share]["NAME"]
+                return name
+
+        def descrition(self):
+                description =self. config[self.share]["DESCRIPTION"]
+                return description
+
+        def author(self):
+                author = self.config[self.share]["AUTHOR"]
+                return author
+
+        def enviroment(self):
+                enviroment = self.config[self.share]["ENVIROMENT"]
+                return enviroment
+
+        def sync_level(self):
+                sync_level = self.config[self.share]["SYNC_LEVEL"]
+                return sync_level
+
+        def node(self):
+                node = self.config[self.share]["NODE"]
+                return node
+
+        def source(self):        
+                source = self.config[self.share]["SOURCE"]
+                return source
+
+        def user(self):        
+                user = self.config[self.share]["USER"]
+                return user
+
+        def destiny(self):              
+                destiny = self.config[self.share]["DESTINY"]
+                return destiny
+
+        def time(self):        
+                time = self.config[self.share]["TIME"]
+                return time
+                
 # FUNCTION THAT READ THE FILE conf\Hosts.JSON AND RETURN THE VALUES
 def json_hosts_read():
         with open(pathHost, 'r') as file:
@@ -129,3 +151,10 @@ def json_global_read():
         global_time = config["GLOBAL"]["TIME"]
         
         return (global_user, global_time)
+
+
+
+
+share = Config("SHARE")
+print(share.time())
+
