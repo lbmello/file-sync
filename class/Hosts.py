@@ -97,6 +97,3 @@ class Hosts:
                 edge.append(hostEdge)'''
 
         #return(json_nodes, json_level0, json_level1, json_level2, nodes, level0, level1, level2, ip, description, uid, edge)
-
-
-        Hosts("TESTE")

@@ -8,8 +8,8 @@ pathConfig = os.path.join(my_path, "../conf/Config.JSON")
 
 
 class Config:
-        def __init__(self, share):
-                self.share = share
+        def __init__(self):
+                self.share = "SHARE"
 
         with open(pathConfig, 'r') as file:
                 config = json.load(file)
@@ -23,7 +23,7 @@ class Config:
                 return name
 
         def descrition(self):
-                description =self. config[self.share]["DESCRIPTION"]
+                description =self.config[self.share]["DESCRIPTION"]
                 return description
 
         def author(self):
@@ -42,18 +42,20 @@ class Config:
                 node = self.config[self.share]["NODE"]
                 return node
 
-        def source(self):        
+        def source(self):
                 source = self.config[self.share]["SOURCE"]
                 return source
 
-        def user(self):        
+        def user(self):
                 user = self.config[self.share]["USER"]
                 return user
 
-        def destiny(self):              
+        def destiny(self):
                 destiny = self.config[self.share]["DESTINY"]
                 return destiny
 
-        def time(self):        
+        def time(self):
                 time = self.config[self.share]["TIME"]
                 return time
+
+print(Config().id)
