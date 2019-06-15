@@ -15,12 +15,7 @@ hosts = [
   { :hostname => 'SRV-FILE', :ip => '172.10.0.10', :box => vmSO },
   { :hostname => 'CLIENT02', :ip => '172.10.0.2', :box => vmSO },
   { :hostname => 'CLIENT03', :ip => '172.10.0.3', :box => vmSO },
-  { :hostname => 'CLIENT04', :ip => '172.10.0.4', :box => vmSO },
-  { :hostname => 'CLIENT05', :ip => '172.10.0.5', :box => vmSO },
-  { :hostname => 'CLIENT06', :ip => '172.10.0.6', :box => vmSO },
-  { :hostname => 'CLIENT07', :ip => '172.10.0.7', :box => vmSO },
-  { :hostname => 'CLIENT08', :ip => '172.10.0.8', :box => vmSO },
-  { :hostname => 'CLIENT09', :ip => '172.10.0.9', :box => vmSO },
+  { :hostname => 'CLIENT04', :ip => '172.10.0.4', :box => vmSO }
 ]
 
 Vagrant.configure("2") do |config|
@@ -32,6 +27,7 @@ Vagrant.configure("2") do |config|
       hostconfig.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
       memory = host[:ram] ? host[:ram] : ram;
       hostconfig.vm.provider :virtualbox do |vb|
+        vb.cpus = 2
         vb.linked_clone = true
         vb.name = host[:hostname]
         vb.customize [
