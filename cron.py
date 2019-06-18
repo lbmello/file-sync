@@ -12,43 +12,46 @@ lab_schedule = time_lab['SCHEDULE']
 lab_time_unity = time_lab['TIME_UNITY']
 lab_frequency = time_lab['FREQUENCY']
 
+def splitString(frase):
+    frase = frase.upper()
+    frase = list(frase)
+    for x in range(0, len(frase), 2):
+        concat =  str(frase[x]) + str(frase[x+1])
+    return concat
+
 # CONFERE OS VALORES
-default_schedule = list(default_schedule)
+asd = splitString(default_schedule)
+print(asd)
 
-diario = []
 
-print(default_schedule)
-for i in range(len(default_schedule)):
-    if default_schedule[i] == "U" or default_schedule[i] == "u":
-        diario.append(0)
+diario = ""
+'''
+for i in range(len()):
+    if default_schedule[i] == "SU":
+        diario = diario + str("0")
         print("Domingo")
     
-    elif default_schedule[i] == 'M' or default_schedule[i] == 'm':
-        diario.append(1)
+    elif default_schedule[i] == 'MO':
+        diario = diario + str("1")
         print("Segunda")
 
-    elif default_schedule[i] == 'T' or default_schedule[i] == 'T':
-        diario.append(2)
+    elif default_schedule[i] == 'TU':
+        diario = diario + str("2")
         print("Terça")
 
-    elif default_schedule[i] == "W" or default_schedule[i] == "w":
-        diario.append(3)
+    elif default_schedule[i] == "WD":
+        diario = diario + str("3")
         print("Quarta")
 
-    elif default_schedule[i] == "T" or default_schedule[i] == "t":
-        diario.append(5)
+    elif default_schedule[i] == "TH":
+        diario = diario + str("4")
         print("Quinta")
 
-    elif default_schedule[i] == "F" or default_schedule[i] == "f":
-        diario.append(6)
+    elif default_schedule[i] == "FR":
+        diario = diario + str("5")
         print("Sexta")
 
-    elif default_schedule[i] == "S" or default_schedule[i] == "s":
-        diario.append(7)
+    elif default_schedule[i] == "SA":
+        diario = diario + str("6")
         print("Sábado")
-    
-    else:
-        print("Caractere inválido!")
-        break
-
-print(diario)
+    '''
