@@ -4,17 +4,35 @@
         "TIME": "DEFAULT"
     },
 
-    "SHARE": {
-        "ID" : "001",
-        "NAME" : "Share_Teste",
-        "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
-        "AUTHOR" : "LBMELLO",
-        "ENVIROMENT" : "LINUX",
-        "SYNC_LEVEL" : "0",
-        "NODE" : "MASTER",
-        "SOURCE" : "/home/share/sync/*",
-        "USER" : "vagrant",
-        "DESTINY" : "/tmp/rsync/",
-        "TIME" : "TIME_LAB"
-    }
+    "SHARE": [
+        {
+            "ID" : "001", 
+            "NAME" : "Share_Teste",
+            "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
+            "AUTHOR" : "LBMELLO",
+            "ENVIROMENT" : "LINUX",
+            "SYNC_LEVEL" : "0",
+            "NODE" : "MASTER",
+            "SOURCE" : "/home/share/sync/*",
+            "USER" : "vagrant",
+            "DESTINY" : "/tmp/rsync/",
+            "TIME" : "TIME_LAB"
+
+        },
+        {
+            "ID" : "002", 
+            "NAME" : "Share_Teste1",
+            "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
+            "AUTHOR" : "LBMELLO",
+            "ENVIROMENT" : "LINUX",
+            "SYNC_LEVEL" : "0",
+            "NODE" : "MASTER",
+            "SOURCE" : "/home/share/sync/*",
+            "USER" : "vagrant",
+            "DESTINY" : "/tmp/rsync/",
+            "TIME" : "TIME_LAB"            
+        }
+    ]
+        
+
 }
