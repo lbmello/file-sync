@@ -1,29 +1,26 @@
 """Arquivo que monta a classe onde são lidos os arquivos dos Hosts."""
 
-from Network import Network
+from json import load
 
 
 class Host():
-    """
-    Classe criada para gerenciamento dos Hosts, lidos no arquivo Hosts.JSON.
-    """
-        
+    """Classe criada para gerenciamento dos Hosts, do arquivo Hosts.JSON."""
+
+    _pathHost = '../../conf/Hosts.JSON'
+
     def __init__(self):
-        network = Network()
-        
-        nodes = Network.read_nodes()
+        """Arquivo Hosts.JSON é lido."""
+        with open(Host._pathHost, 'r') as file:
+            self.hosts = load(file)
 
-        for key, value in nodes.items():
-            self.nome = key
-            self.ip = value[0]
-            self.description = value[1]
-            self.uid = value[2]
-            self.edge = value[3]
+    def get_sync_level(self):
+        """Retorna valores de SYNC_LEVEL em Hosts.JSON."""
+        return self.hosts["SYNC_LEVEL"]
 
-        print(self.ip)
-        print(self.description)
-        print(self.uid)
-        print(self.edge)
+    def get_nodes(self):
+        """Retorna valores de NODES em Hosts.JSON."""
+        return self.hosts["NODES"]
+
 
 if __name__ == '__main__':
     Host()

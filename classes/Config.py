@@ -1,13 +1,22 @@
+#!/usr/bin/python3.6
+
 import json
-import os.path
+from os import path
 
-# RELATIVE PATH DECLARATION
-my_path = os.path.abspath(os.path.dirname(__file__))
 
-pathConfig = os.path.join(my_path, "../conf/Config.JSON")
 
 
 class Config:
+        
+        # RELATIVE PATH DECLARATION
+        my_path = path.abspath(path.dirname(__file__))
+        pathConfig = path.join(my_path, "../conf/Config.JSON")
+        
+        @classmethod
+        def teste(cls):
+                cls.teste = 'meuovo'
+                return cls.teste
+        
         def __init__(self):
                 self.share = "SHARE"
 
@@ -58,4 +67,6 @@ class Config:
                 time = self.config[self.share]["TIME"]
                 return time
 
-print(Config().id)
+if __name__ == "__main__":
+    lala = Config()
+    Config.teste()
