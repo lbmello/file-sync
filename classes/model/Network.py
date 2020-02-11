@@ -2,47 +2,58 @@
 from json import load
 from importlib import util
 
-from ..controller.PathFile import PathFile
+from classes.controller.PathFile import PathFile
 
 class Network(object):
     """
     Classe de onde são lidos os valores dos arquivos de configuração e hosts.
     """
 
-    def __init__(self):
-        __path_config = Pathfile.path_config()
-        __path_host = Pathfile.path_host()
+    __path_config = PathFile.get_path_config()
+    __path_host = PathFile.get_path_host()
 
-        with open(__path_config, 'r') as __configfile:
-            __config = load(__configfile)
+   # ARQUIVO CONFIG SENDO LIDO
+    with open(__path_config, 'r') as __configfile:
+        __config = load(__configfile)
 
-            # CONTAGEM DE COMPARTILHAMENTOS
-            self.share_count = len(__config["SHARE"])
+        # CONTAGEM DE COMPARTILHAMENTOS
+        share_count = len(__config["SHARE"])
+        
+        # SHARES - CONTEUDO COMPLETO DO SHARE
+        shares = __config["SHARE"]
+        
+        # SHARE ID - SOMENTE OS IDs
+        share_id = []
+        
+        for share in shares:
+            share_id.append(share["ID"])
 
-            # SHARES - CONTEUDO COMPLETO DO SHARE
-            self.shares = __config["SHARE"]
-
-            # SHARE ID - SOMENTE OS IDs
-            self.share_id = []
-
-            for share in shares:
-                self.share_id.append(share["ID"])
-
-        __configfile.close()
+    __configfile.close()
 
 
-        # ARQUIVO HOSTS SENDO LIDO
-        with open(__path_host, 'r') as __hostfile:
-            __hosts = load(__hostfile)
+    @classmethod
+    def get_share_count(cls):
+        return cls.share_count
 
-            # CONTAGEM DE HOSTS
-            self.hosts_count = len(__hosts["NODES"])
+    @classmethod
+    def get_share_id(cls):
+        return cls.share_id
 
-            # NODES - CONTEUDO COMPLETO DOS NODES
-            self.nodes = (__hosts["NODES"])
 
-        __hostfile.close()
+    # ARQUIVO HOSTS SENDO LIDO
+    with open(__path_host, 'r') as __hostfile:
+        __hosts = load(__hostfile)
 
-    def read_nodes(self):
-        return self.nodes
+        # CONTAGEM DE HOSTS
+        hosts_count = len(__hosts["NODES"])
+        
+        # NODES - CONTEUDO COMPLETO DOS NODES
+        nodes = (__hosts["NODES"])
+    
+    __hostfile.close()
+
+
+    @classmethod
+    def get_nodes(cls):
+        return cls.nodes
         

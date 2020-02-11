@@ -5,26 +5,23 @@ class PathFile(object):
     """
     Classe responsável pelos retornos dos caminhos do sistema.
     """
-
-    def __init__(self):
-        """
-        Método construtor de Pathfile.
-        """        
-        __my_path = path.abspath(
-            path.dirname(__file__))
+    
+    __my_path = path.abspath(
+    path.dirname(__file__))
         
-        self.path_config = path.join(
-            __my_path, "../../conf/Config.JSON")
+    path_config = path.join(
+        __my_path, "../../conf/Config.JSON")
                
-        self.path_host = path.join(
-            __my_path, "../../conf/Hosts.JSON")
+    path_host = path.join(
+        __my_path, "../../conf/Hosts.JSON")
 
-    def path_config(self):
+    @classmethod
+    def get_path_config(cls):
         """Retorna o caminho absoluto do arquivo Config.JSON."""
 
-        return self.path_config
+        return cls.path_config
 
-    def path_host(self):
+    def get_path_host(cls):
         """Retorna o caminho absoluto do arquivo Hosts.JSON."""
 
-        return self.path_host
+        return cls.path_host
