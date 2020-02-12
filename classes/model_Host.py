@@ -1,16 +1,16 @@
-"""Arquivo que monta a classe onde são lidos os arquivos dos Hosts."""
+"""Módulo que gerencia a classe onde são lidos os arquivos dos Hosts."""
 
 from json import load
 
 
-class Host():
+class model_Host():
     """Classe criada para gerenciamento dos Hosts, do arquivo Hosts.JSON."""
 
     _pathHost = '../../conf/Hosts.JSON'
 
     def __init__(self):
         """Arquivo Hosts.JSON é lido."""
-        with open(Host._pathHost, 'r') as file:
+        with open(model_Host._pathHost, 'r') as file:
             self.hosts = load(file)
 
     def get_sync_level(self):
@@ -23,4 +23,5 @@ class Host():
 
 
 if __name__ == '__main__':
-    Host()
+    teste = model_Host()
+    teste.get_nodes()

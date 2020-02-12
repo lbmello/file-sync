@@ -1,9 +1,9 @@
 """Arquivo da classe Level."""
 
-from Host import Host
+from classes.model_Host import Host
 
 
-class Level():
+class model_Level():
     """Retorna os valores contidos na segunda parte do arquivo Hosts.JSON."""
 
     def __init__(self):
@@ -33,5 +33,5 @@ class Level():
 
 
 if __name__ == "__main__":
-    lala = Level()
-    print(lala.get_some_level(4))
+    teste = model_Level()
+    print(teste.get_some_level(4))

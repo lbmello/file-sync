@@ -1,16 +1,16 @@
-"""Arquivo que monta a classe onde são lidos os arquivos dos Config.JSON"""
+"""Módulo que gerencia a classe onde são lidos os arquivos de Configuração."""
 
 from json import load
 
 
-class Config():
+class model_Config():
     """Classe criada para gerenciamento das Configurações, do arquivo Config.JSON."""
     
-    _pathConfig = '../../conf/Config.JSON'
+    _path_config = '../../conf/Config.JSON'
 
     def __init__(self):
         """Arquivo Config.JSON é lido."""
-        with open(Config._pathConfig, 'r') as file:
+        with open(model_Config._path_config, 'r') as file:
             self.config = load(file)
 
     def get_global_config(self):
@@ -57,6 +57,6 @@ class Config():
 
         
 if __name__ == "__main__":
-    teste = Config()
+    teste = model_Config()
     a = teste.get_share_by_id('Share_Teste1')
     print(a)    
