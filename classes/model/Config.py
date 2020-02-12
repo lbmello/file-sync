@@ -42,10 +42,21 @@ class Config():
 
     def get_share_by_name(self, nome):
         """Retorna Share solicitado via parâmetro como nome (str) para select."""
-        pass
+        _nome = str(nome)
+        _shares = self.config['SHARE']
+
+        _keys = []
+        _values = []
+
+        for _index, _share in enumerate(_shares):
+            _keys.append(_share.keys())
+            _values.append(_share.values())
+
+            if _nome in _values[_index]:
+                return _share
 
         
 if __name__ == "__main__":
     teste = Config()
-    a = teste.get_share_by_id('002')
+    a = teste.get_share_by_id('Share_Teste1')
     print(a)    
