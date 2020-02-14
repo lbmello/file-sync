@@ -6,7 +6,7 @@ from json import load
 class model_Host():
     """Classe criada para gerenciamento dos Hosts, do arquivo Hosts.JSON."""
 
-    _pathHost = '../../conf/Hosts.JSON'
+    _pathHost = '../conf/Hosts.JSON'
 
     def __init__(self):
         """Arquivo Hosts.JSON é lido."""
@@ -24,4 +24,4 @@ class model_Host():
 
 if __name__ == '__main__':
     teste = model_Host()
-    teste.get_nodes()
+    print(teste.get_nodes())

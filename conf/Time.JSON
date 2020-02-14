@@ -1,14 +1,16 @@
 {
     "DEFAULT":{
-        "SCHEDULE": "MTWTF",
-        "TIME_UNITY":  "MI",
-        "FREQUENCY": "15"
+        "SCHEDULE": "MTWTF__",
+        "OPERATOR": "EVERY",
+        "FREQUENCY": "5",
+        "TIME_UNITY":  "DAY"
     },
 
     "LAB":{
         "SCHEDULE": "MTWTFSS",
-        "TIME_UNITY":  "MI",
-        "FREQUENCY": "5"
+        "OPERATOR": "EVERY",
+        "FREQUENCY": "5",
+        "TIME_UNITY":  "MIN"
     }
 }
 

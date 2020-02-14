@@ -82,7 +82,32 @@ class controller_Time():
 
         return _new_date
 
+    def format_time(self, id_time):
+        _time = self.times[id_time]
+
+        _minute = '*'
+        _hour = '*'
+        _day_month = '*'
+        _month_of_year = '*'
+        _day_of_week = '*'
+        
+        if _time['OPERATOR'] == 'EVERY':
+            if _time['TIME_UNITY'] == 'MIN':
+                _minute = _time['FREQUENCY']
+            if _time['TIME_UNITY'] == 'HRS':
+                _hour = _time['FREQUENCY']
+            if _time['TIME_UNITY'] ==  'DAY':
+                _day_month = _time['FREQUENCY']
+            if _time['TIME_UNITY'] == 'MTH':
+                _month_of_year = _time['FREQUENCY']
+
+        _day_of_week = self.format_date(_time['SCHEDULE'])
+
+        return (_minute, _hour, _day_month, _month_of_year, _day_of_week)
+
+
 
 if __name__ == "__main__":
     teste = controller_Time()
-    print(teste.format_date("MTWT_SS"))
+    print(teste.format_time("DEFAULT"))
+    #print(teste.format_date('MTWTF__'))
