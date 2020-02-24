@@ -2,6 +2,7 @@
 
 
 from model_Time import model_Time
+from datetime import datetime
 
 
 class controller_Time():
@@ -85,6 +86,8 @@ class controller_Time():
     def get_time(self, id_time):
         _time = self.times[id_time]
 
+        _date = '*'
+        _operator = '*'
         _minute = '*'
         _hour = '*'
         _day_month = '*'
@@ -94,6 +97,7 @@ class controller_Time():
         
         """ Operador EVERY."""
         if _time['OPERATOR'] == 'EVERY':
+            _operator = '--every--'
             
             # A CADA MINUTO
             if _time['TIME_UNITY'] == 'MIN':
@@ -105,7 +109,7 @@ class controller_Time():
 
             # A CADA DIA
             if _time['TIME_UNITY'] == 'DAY':
-                _hour = 24
+                _hour = _time['FREQUENCY']
         
             # A CADA MÊS    
             if _time['TIME_UNITY'] == 'MTH':
@@ -114,14 +118,27 @@ class controller_Time():
         
         """ Operador IN."""
         if _time['OPERATOR'] == 'IN':
+            _operator = '--in--'
             
-            # APENAS NO DIA
-            if _time['TIME_UNITY'] == 'MONTH_DAY':
-                _day_month = _time['FREQUENCY']
+            # APENAS NO DIA X DO MÊS Y
+            if _time['TIME_UNITY'] == 'SPECIFIC_DAY':
+                input_date = _time['FREQUENCY']
 
+                input_date = input_date.split('/')
 
+                _month = int(input_date[0])
+                _day = int(input_date[1])
+                _year = int(input_date[2])
+
+                date = datetime(year = _year, 
+                                day = _day, 
+                                month = _month)
+
+                _date = date            
+                
         """ Operador SPECIAL."""
         if _time['OPERATOR'] == 'SPECIAL':
+            _operator = '--special--'
 
             # A CADA HORA GENERICA
             if _time['FREQUENCY'] == 'HOURLY':
@@ -139,13 +156,17 @@ class controller_Time():
             if _time['FREQUENCY'] == 'MONTHLY':
                 _special = '@monthly'
 
+            # NO REBOOT
+            if _time['FREQUENCY'] == 'REBOOT':
+                _special = '@reboot'
+
 
         """ Leitura dos dias da semana."""
         _day_of_week = self.get_week(_time['SCHEDULE'])
 
-        return [_minute, _hour, _day_month, _month_of_year, _day_of_week, _special]
+        return [_operator, _date, _minute, _hour, _day_month, _month_of_year, _day_of_week, _special]
 
 if __name__ == "__main__":
     teste = controller_Time()
-    print(teste.get_time("DEFAULT"))
+    print(teste.get_time("LAB"))
     #print(teste.get_week('MTWTF__'))
