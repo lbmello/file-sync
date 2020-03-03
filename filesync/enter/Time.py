@@ -1,16 +1,16 @@
-"""Gerencia os dados de tempo lidos por model.Time."""
+"""Formata e retorna os dados de tempo lidos por data.Time."""
 
 
-from model_Time import model_Time
+from ..data.Time import Time as data_time
 from datetime import datetime
 
 
-class controller_Time():
+class Time():
     """Gerencia os dados de tempo lidos por model.Time."""
 
     def __init__(self):
         """Instância de model.Time."""
-        _time = model_Time()
+        _time = data_time()
         self.times = _time.get_times()
         self.time_default = _time.get_time_default()
 
@@ -79,10 +79,10 @@ class controller_Time():
         elif _sunday == "_":
             pass
         else:
-            raise ValueError("Entrada inválida!")
-
+            raise ValueError("Entrada inválida!")         
+        
         return _new_date
-
+        
     def get_time(self, id_time):
         _time = self.times[id_time]
 
@@ -167,6 +167,4 @@ class controller_Time():
         return [_operator, _date, _minute, _hour, _day_month, _month_of_year, _day_of_week, _special]
 
 if __name__ == "__main__":
-    teste = controller_Time()
-    print(teste.get_time("LAB"))
-    #print(teste.get_week('MTWTF__'))
+    pass

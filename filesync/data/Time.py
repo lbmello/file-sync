@@ -1,16 +1,16 @@
-"""Módulo que gerencia a classe onde são lidos as entradas de tempo."""
+"""Leitura do arquivo Time.JSON."""
 
 from json import load
 
 
-class model_Time():
+class Time():
     """Classe criada para gerenciamento das entradas de tempo, do arquivo Time.JSON."""
 
-    pathTime = '../conf/Time.JSON'
+    pathTime = 'conf/Time.JSON'
 
     def __init__(self):
         """Arquivo Time.JSON é lido."""
-        with open(model_Time.pathTime, 'r') as file:
+        with open(Time.pathTime, 'r') as file:
             self.time = load(file)
 
     def get_times(self):

@@ -1,25 +1,26 @@
 
-from controller_Time import controller_Time
 from crontab import CronTab
 
-class controller_Cron():
+from .Time import Time
+
+class Cron():
 
     default_user = 'lucas'
 
     def __init__(self, id_time):
-        _time = controller_Time()
+        _time = Time()
         
         self.operator, self.date, self.minute, self.hour, self.day_month, self.month_of_year, self.day_of_week, self.special = _time.get_time(id_time)
 
-        self.crontab = CronTab(user=controller_Cron.default_user)
+        self.crontab = CronTab(user=Cron.default_user)
 
 
     def set_crontab_every(self, command):
         job  = self.crontab.new(command=command)
         
-        _cron = f'* * * * *'
+        _cron = f'{self.minute} {self.hour} {self.day_month} {self.month_of_year} {self.day_of_week}'
 
-        if self.minute != '*':
+        '''if self.minute != '*':
             _cron = f'{self.minute} * * * *'
 
         if self.hour != '*':
@@ -31,8 +32,8 @@ class controller_Cron():
         if self.month_of_year != '*':
             _cron = f'* * * {self.month_of_year} *'
 
-        #if self.day_of_week != '*':
-        #    _cron = f'* * * * {self.day_of_week[0]}'
+        if self.day_of_week != '*':
+            _cron = f'* * * * {self.day_of_week[0]}'''
 
         job.setall(_cron)
         
@@ -67,22 +68,23 @@ class controller_Cron():
 
     def set_crontab_all(self, command):
         if self.operator == '--every--':
-            controller_Cron.set_crontab_every(self, command)
+            Cron.set_crontab_every(self, command)
             
         if self.operator == '--in--':
-            controller_Cron.set_crontab_in(self, command)
+            Cron.set_crontab_in(self, command)
 
         if self.operator == '--special--':
-            controller_Cron.set_crontab_special(self, command)
+            Cron.set_crontab_special(self, command)
 
         else:
-            controller_Cron.clear_crontab(self)
+            Cron.clear_crontab(self)
 
     
     def clear_crontab(self):
         pass
 
 if __name__ == "__main__":
-    teste = controller_Cron('LAB')
+    teste = Cron('LAB')
     teste.set_crontab_all('/bin/echo')
     #teste.clear_crontab()
+    #parei antes de modularization aqui

@@ -1,9 +1,9 @@
 """Arquivo da classe Node."""
 
-from classes.model_Host import Host
+from ..data.Host import Host
 
 
-class model_Node():
+class Node():
     """Retorna os valores contidos na primeira parte do arquivo Hosts.JSON."""
 
     def __init__(self):
@@ -26,6 +26,4 @@ class model_Node():
 
 
 if __name__ == "__main__":
-    teste = model_Node()
-    a = teste.get_some_node('SRV-FILE')
-    print(a)
+    pass
