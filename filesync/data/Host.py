@@ -4,7 +4,7 @@ from json import load
 
 
 class Host():
-    """Leitura dos arquivos Hosts.JSON."""
+    """Leitura do arquivo Hosts.JSON."""
 
     _pathHost = 'conf/Hosts.JSON'
 

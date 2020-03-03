@@ -1,4 +1,4 @@
-"""Formata e retorna os dados de tempo lidos por data.Time."""
+"""Formata no padrão Crontab e retorna os valores da classe data.Time."""
 
 
 from ..data.Time import Time as data_time
@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 class Time():
-    """Gerencia os dados de tempo lidos por model.Time."""
+    """Formata no padrão Crontab e retorna os valores da classe data.Time."""
 
     def __init__(self):
         """Instância de model.Time."""

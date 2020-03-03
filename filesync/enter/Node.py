@@ -1,4 +1,4 @@
-"""Arquivo da classe Node."""
+"""Retorna os valores contidos na primeira parte do arquivo Hosts.JSON."""
 
 from ..data.Host import Host
 

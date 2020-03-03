@@ -1,4 +1,4 @@
-"""Inicializador do módulo enter."""
+"""Inicializador do pacote enter."""
 
 from .Cron import Cron
 from .Level import Level

@@ -1,10 +1,10 @@
-"""Leitura do arquivo de Config.JSON."""
+"""Leitura do arquivo Config.JSON."""
 
 from json import load
 
 
 class Config():
-    """Classe criada para gerenciamento das Configurações, do arquivo Config.JSON."""
+    """Leitura do arquivo Config.JSON."""
     
     _path_config = 'conf/Config.JSON'
 

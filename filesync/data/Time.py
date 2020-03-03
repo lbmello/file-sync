@@ -4,7 +4,7 @@ from json import load
 
 
 class Time():
-    """Classe criada para gerenciamento das entradas de tempo, do arquivo Time.JSON."""
+    """Leitura do arquivo Time.JSON."""
 
     pathTime = 'conf/Time.JSON'
 

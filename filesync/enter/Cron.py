@@ -1,9 +1,11 @@
+"""Classe de interface com o Crontab."""
 
 from crontab import CronTab
 
 from .Time import Time
 
 class Cron():
+    """Classe de interface com o Crontab."""
 
     default_user = 'lucas'
 

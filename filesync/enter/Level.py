@@ -1,4 +1,4 @@
-"""Arquivo da classe Level."""
+"""Retorna os valores contidos na segunda parte do arquivo Hosts.JSON."""
 
 from ..data.Host import Host
 
