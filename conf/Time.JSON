@@ -1,14 +1,22 @@
 {
     "DEFAULT":{
-        "SCHEDULE": "MTWTF",
-        "TIME_UNITY":  "MI",
-        "FREQUENCY": "15"
+        "SCHEDULE": "MTWTFSS",
+        "OPERATOR": "SPECIAL",
+        "FREQUENCY": "HOURLY"
     },
 
     "LAB":{
         "SCHEDULE": "MTWTFSS",
-        "TIME_UNITY":  "MI",
-        "FREQUENCY": "5"
+        "OPERATOR": "EVERY",
+        "FREQUENCY": "5",
+        "TIME_UNITY":  "MIN"
+    },
+
+    "SPECIFIC_DAY":{
+        "SCHEDULE": "_______",
+        "OPERATOR": "IN",
+        "TIME_UNITY":  "SPECIFIC_DAY",
+        "FREQUENCY": "12/01/2020"
     }
 }
 
