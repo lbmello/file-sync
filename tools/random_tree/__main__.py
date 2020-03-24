@@ -1,27 +1,20 @@
-import threading
-from time import sleep
+from random_tree import Root, Folder, Files
 
-from root import Root
-from subfolder import Subfolder
+if __name__ == "__main__":
+    pass
+    # Quando instanciado, já adiciona o default path na fila para criação
+    root = Root()
 
+    # Cria os galhos da arvore
+    folder = Folder()
+    folder.create_branch()
+    folder.create_queue_folders()
 
-root = Root()
-root_folder = Subfolder()
+    # Realimenta a fila com os paths e cria subpastas
+    folder.tree_to_queue()
+    folder.create_queue_subfolders()
 
-  
-th_create_folder = threading.Thread(target=Root.create_subfolder)
-
-root_subdirs = root_folder.get_subdirs()
-
-for sdr in root_subdirs:
-    sdr = Subfolder(current_folder=f'{sdr}/')
-
-
-th_create_folder.start()
-
-sleep(15)
-
-th_create_folder.join()
-
-
-
+    # Realimenta a fila  com paths e cria os arquivos
+    folder.tree_to_queue()
+    files = Files()
+    files.create_queue_files()
