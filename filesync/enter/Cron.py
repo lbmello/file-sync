@@ -1,6 +1,6 @@
 """Classe de interface com o Crontab."""
 
-from crontab import CronTab
+#from crontab import CronTab
 
 from .Time import Time
 
@@ -86,7 +86,8 @@ class Cron():
         pass
 
 if __name__ == "__main__":
-    teste = Cron('LAB')
-    teste.set_crontab_all('/bin/echo')
+    pass
+    #teste = Cron('LAB')
+    #teste.set_crontab_all('/bin/echo')
     #teste.clear_crontab()
     #parei antes de modularization aqui

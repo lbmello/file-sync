@@ -2,37 +2,41 @@
 # vi: set ft=ruby :
 
 # Configuração geral da VM
-vmSO = "ubuntu/trusty64"
+vmSO = "centos/7-2020"
 ram = 256
 
 # Configuração da pasta sincronizada
 syncedFolderConf = false
-syncedFolderOrigin = "C:/Users/Lucas/Documents/FileSync"
-syncedFolderDestiny = "/home/filesync/"
+syncedFolderOrigin = '/home/lucas/Documents/GitHub/file-sync/'
+syncedFolderDestiny = '/home/filesync/'
 
 # Hosts da rede
 hosts = [
-  { :hostname => 'SRV-FILE', :ip => '172.10.0.10', :box => vmSO },
-  { :hostname => 'CLIENT02', :ip => '172.10.0.2', :box => vmSO },
-  { :hostname => 'CLIENT03', :ip => '172.10.0.3', :box => vmSO },
-  { :hostname => 'CLIENT04', :ip => '172.10.0.4', :box => vmSO }
+  { :hostname => 'AN1E', :ip_v => '177.166.0.10', :ip => '10.0.0.10', :box => vmSO },
+  { :hostname => 'AN2E', :ip_v => '177.166.1.10', :ip => '10.0.0.11', :box => vmSO },
+  { :hostname => 'AN3E', :ip_v => '177.166.2.10', :ip => '10.0.0.12', :box => vmSO }, 
+  { :hostname => 'AS1E', :ip_v => '200.225.0.10', :ip => '10.0.0.13', :box => vmSO },
+  { :hostname => 'AS2E', :ip_v => '200.225.1.10', :ip => '10.0.0.14', :box => vmSO },
+  { :hostname => 'AS4E', :ip_v => '200.225.2.10', :ip => '10.0.0.15', :box => vmSO },
+  { :hostname => 'AS3E', :ip_v => '200.225.3.10', :ip => '10.0.0.16', :box => vmSO }
 ]
 
 Vagrant.configure("2") do |config|
   hosts.each do |host|
     config.vm.define host[:hostname] do |hostconfig|
       hostconfig.vm.box = vmSO
-      hostconfig.vm.hostname = host[:hostname] + ".box"
+      hostconfig.vm.hostname = host[:hostname] + '.box'
+      hostconfig.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: false, type: "rsync"
       hostconfig.vm.network :private_network, ip: host[:ip]
-      hostconfig.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: syncedFolderConf
+      hostconfig.vm.provision 'shell', path: '/home/lucas/Documents/GitHub/file-sync/vagrant/python3_install.py'
       memory = host[:ram] ? host[:ram] : ram;
       hostconfig.vm.provider :virtualbox do |vb|
         vb.cpus = 2
         vb.linked_clone = true
         vb.name = host[:hostname]
         vb.customize [
-          "modifyvm", :id,
-          "--cpuexecutioncap", "50"        ]
+          'modifyvm', :id,
+          '--cpuexecutioncap', '50']
       end
     end
   end

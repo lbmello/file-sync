@@ -1,90 +1,32 @@
-"""Formata no padrão Crontab e retorna os valores da classe data.Time."""
 
-
-from ..data.Time import Time as data_time
 from datetime import datetime
 
+from ..data.Time import Time as data_time
 
-class Time():
-    """Formata no padrão Crontab e retorna os valores da classe data.Time."""
 
-    def __init__(self):
-        """Instância de model.Time."""
-        _time = data_time()
-        self.times = _time.get_times()
-        self.time_default = _time.get_time_default()
+class Time:
+    """Objetos com as entradas de tempo."""
 
-    def get_week(self, json_days):
-        """Formata os dados de dias da semana lidos (str) do campo SCHEDULE de
-        conf/Time.JSON e retorna lista (int) com os respectivos dias, no
-        formato aceito pelo crontab."""
-        days = json_days
+    def __init__(self, time_data):
+        self.time_data = time_data
 
-        days = [days[start:start+1] for start in range(0, len(days), 1)]
+        (
+            self.operator,
+            self.date, 
+            self.minute, 
+            self.hour, 
+            self.day_month, 
+            self.month_of_year, 
+            self.day_of_week, 
+            self.special
 
-        _monday = days[0].upper()
-        _tuesday = days[1].upper()
-        _wednesday = days[2].upper()
-        _thursday = days[3].upper()
-        _friday = days[4].upper()
-        _saturday = days[5].upper()
-        _sunday = days[6].upper()
+        ) = self._get_formated_time(time_data = time_data)        
+    
 
-        _new_date = []
-
-        if _monday == "M":
-            _new_date.append(1)
-        elif _monday == "_":
-            pass
-        else:
-            raise ValueError("Entrada inválida!")
-
-        if _tuesday == "T":
-            _new_date.append(2)
-        elif _tuesday == "_":
-            pass
-        else:
-            raise ValueError("Entrada inválida!")
-
-        if _wednesday == "W":
-            _new_date.append(3)
-        elif _wednesday == "_":
-            pass
-        else:
-            raise ValueError("Entrada inválida!")
-
-        if _thursday == "T":
-            _new_date.append(4)
-        elif _thursday == "_":
-            pass
-        else:
-            raise ValueError("Entrada inválida!")
-
-        if _friday == "F":
-            _new_date.append(5)
-        elif _friday == "_":
-            pass
-        else:
-            raise ValueError("Entrada inválida!")
-
-        if _saturday == "S":
-            _new_date.append(6)
-        elif _saturday == "_":
-            pass
-        else:
-            raise ValueError("Entrada inválida!")
-
-        if _sunday == "S":
-            _new_date.append(7)
-        elif _sunday == "_":
-            pass
-        else:
-            raise ValueError("Entrada inválida!")         
+    def _get_formated_time(self, time_data):
+        """ Formata e retorna entradas de tempo no padrao crontab."""
         
-        return _new_date
-        
-    def get_time(self, id_time):
-        _time = self.times[id_time]
+        _time = time_data
 
         _date = '*'
         _operator = '*'
@@ -162,9 +104,76 @@ class Time():
 
 
         """ Leitura dos dias da semana."""
-        _day_of_week = self.get_week(_time['SCHEDULE'])
+        _day_of_week = self._get_week(_time['SCHEDULE'])
 
         return [_operator, _date, _minute, _hour, _day_month, _month_of_year, _day_of_week, _special]
 
-if __name__ == "__main__":
-    pass
+    # Formatacao de dados
+    def _get_week(self, json_days):
+        """Formata os dados de dias da semana lidos (str) do campo SCHEDULE de
+        conf/Time.JSON e retorna lista (int) com os respectivos dias, no
+        formato aceito pelo crontab."""
+        days = json_days
+
+        days = [days[start:start+1] for start in range(0, len(days), 1)]
+
+        _monday = days[0].upper()
+        _tuesday = days[1].upper()
+        _wednesday = days[2].upper()
+        _thursday = days[3].upper()
+        _friday = days[4].upper()
+        _saturday = days[5].upper()
+        _sunday = days[6].upper()
+
+        _new_date = []
+
+        if _monday == "M":
+            _new_date.append(1)
+        elif _monday == "_":
+            pass
+        else:
+            raise ValueError("Entrada inválida!")
+
+        if _tuesday == "T":
+            _new_date.append(2)
+        elif _tuesday == "_":
+            pass
+        else:
+            raise ValueError("Entrada inválida!")
+
+        if _wednesday == "W":
+            _new_date.append(3)
+        elif _wednesday == "_":
+            pass
+        else:
+            raise ValueError("Entrada inválida!")
+
+        if _thursday == "T":
+            _new_date.append(4)
+        elif _thursday == "_":
+            pass
+        else:
+            raise ValueError("Entrada inválida!")
+
+        if _friday == "F":
+            _new_date.append(5)
+        elif _friday == "_":
+            pass
+        else:
+            raise ValueError("Entrada inválida!")
+
+        if _saturday == "S":
+            _new_date.append(6)
+        elif _saturday == "_":
+            pass
+        else:
+            raise ValueError("Entrada inválida!")
+
+        if _sunday == "S":
+            _new_date.append(7)
+        elif _sunday == "_":
+            pass
+        else:
+            raise ValueError("Entrada inválida!")         
+        
+        return _new_date

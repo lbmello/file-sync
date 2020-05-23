@@ -13,15 +13,30 @@ class Host():
         with open(Host._pathHost, 'r') as file:
             self.hosts = load(file)
 
+    
     def get_sync_level(self):
-        """Retorna valores de SYNC_LEVEL em Hosts.JSON."""
+        """Retorna todos valores de SYNC_LEVEL em Hosts.JSON."""
         return self.hosts["SYNC_LEVEL"]
 
+    
     def get_nodes(self):
-        """Retorna valores de NODES em Hosts.JSON."""
+        """Retorna todos valores de NODES em Hosts.JSON."""
         return self.hosts["NODES"]
 
+    
+    def get_nodes_name(self):
+        """Retorna lista com somente o nome dos nodes."""
+        return list(self.hosts.keys())
+
+    
+    def get_some_node(self, n_node):
+        """Retorna valores de um nó específico, passado por parâmetro."""
+        return self.hosts[n_node]
+
+    
+    def size(self):
+        """Retorna contagem em inteiro dos nodes."""
+        return(len(self.hosts))
 
 if __name__ == '__main__':
-    teste = model_Host()
-    print(teste.get_nodes())
+    ...

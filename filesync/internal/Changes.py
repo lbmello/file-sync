@@ -1,7 +1,5 @@
 """Módulo para identificar quando existiu alteração em algum share."""
 
-import os
-import subprocess
 import hashlib
 
 from ..data.Config import Config
@@ -15,29 +13,36 @@ class Changes():
         
         self.share = share_id
 
-        tree_obj = Tree(f'{self.share}')
-        self.tree = tree_obj.get_tree()
+        # Instância de Tree
+        _tree_obj = Tree(f'{self.share}')
+        self.tree = _tree_obj.get_tree()
+        
+        self.checksum_files = []
 
         for folder in self.tree:
             _source = folder['source']
             _files = folder['files']
 
-            md5_obj = hashlib.md5()
-
-            self.checksum_files = []
-
-            if len(_files) > 1:
+            if _files:
                 for _file in _files:
-                    _file = bytes(_file, encoding='utf8')
-                    
-                    md5_obj.update(_file)
+                    open_file = open(f'{_source}/{_file}', 'r')
 
-                    checksum = md5_obj.hexdigest()
+                    try:
+                        checksum = hashlib.md5((open_file.read()).encode()).hexdigest()
                     
+                    except UnicodeDecodeError:
+                        print(f'Erro no decode de {_file}')
+
                     self.checksum_files.append({'source':_source, 
                                                'file': _file,
                                                'checksum': checksum})
 
+                    open_file.close()
+
     def get_actual_state(self):
-        # TODO: Criar classe que leia os dados de algum documento JSON com o ultimo estado dos arquivos para comparação. 
-        pass
+        return self.checksum_files
+
+    # TODO: Criar classe que leia os dados de algum documento JSON com o ultimo estado dos arquivos para comparação. 
+
+if __name__ == "__main__":
+    teste = Changes('001')

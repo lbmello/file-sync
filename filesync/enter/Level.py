@@ -33,5 +33,4 @@ class Level():
 
 
 if __name__ == "__main__":
-    teste = Level()
-    print(teste.get_some_level(4))
+    pass
