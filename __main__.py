@@ -10,6 +10,9 @@ from filesync import network
 #from filesync.api import server
 #from filesync import api
 
+d_host = str()
+d_time = str()
+d_config = str()
 
 
 def main_data():
@@ -27,6 +30,12 @@ def main_data():
 
     global _times_
     _times_ = d_time.get_times()
+
+    global _global_config_
+    _global_config_ = d_config.get_global_config()
+
+    global _share_config_
+    _share_config_ = d_config.get_share_config()
     
 def main_enter():
     """ Declaracao dos objetos dos itens lidos em main_data."""
@@ -75,7 +84,98 @@ def main_enter():
         line = (_times_[f'{time}'])
         _time_objects_.append(enter.Time(time_data = line))
 
-    # TODO: CRIAR MESMA LOGICA PARA CONFIG
+    # config.json, item global
+    for config in _global_config_:
+        line = _global_config_[f'{config}']
+
+        _global_name = _global_config_['NAME']
+        _global_description = _global_config_['DESCRIPTION']
+        _global_author = _global_config_['AUTHOR']
+        _global_enviroment = _global_config_['ENVIROMENT']
+        _global_sync_level = _global_config_['SYNC_LEVEL']
+        _global_node = _global_config_['NODE']
+        _global_source = _global_config_['SOURCE']
+        _global_user = _global_config_['USER']
+        _global_destiny = _global_config_['DESTINY']
+        _global_time = _global_config_['TIME']
+    
+    # config.json, item share
+    for config in _share_config_:
+        for _ in config:
+            _id_config = config['ID']
+
+            try: config['NAME']
+            except KeyError:
+                _name = _global_name
+            else:
+                _name = config['NAME']
+
+            try: config['DESCRIPTION']
+            except KeyError:
+                _name = _global_description
+            else:
+                _description = config['DESCRIPTION']
+            
+            try: config['AUTHOR']
+            except KeyError:
+                _author = _global_author
+            else:
+                _author = config['AUTHOR']
+
+            try: config['ENVIROMENT']
+            except KeyError:
+                _enviroment = _global_enviroment
+            else:
+                _enviroment = config['ENVIROMENT']
+
+            try: config['SYNC_LEVEL']
+            except KeyError:
+                _sync_level = _global_sync_level
+            else:
+                _sync_level = config['SYNC_LEVEL']
+
+            try: config['NODE']
+            except KeyError:
+                _node = _global_node
+            else:
+                _node = config['NODE']
+
+            try: config['SOURCE']
+            except KeyError:
+                _source = _global_source
+            else:
+                _source = config['SOURCE']
+
+            try: config['USER']
+            except KeyError:
+                _user = _global_user
+            else:
+                _user = config['USER']
+            
+            try: config['DESTINY']
+            except KeyError:
+                _destiny = _global_destiny
+            else:
+                _destiny = config['DESTINY']
+            
+            try: config['TIME']
+            except KeyError:
+                _time = _global_time
+            else:
+                _time = config['TIME']
+            
+        _config_objects_.append(enter.Config(   id_config = _id_config, 
+                                                name = _name,
+                                                description = _description,
+                                                author = _author,
+                                                enviroment = _enviroment,
+                                                sync_level = _sync_level,
+                                                node = _node,
+                                                source = _source,
+                                                user = _user,
+                                                destiny = _destiny,
+                                                time = _time))
+
 
 def main_internal():
     ...
