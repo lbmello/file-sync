@@ -19,11 +19,11 @@ def main_data():
     d_time = data.Time()
     d_config = data.Config()
 
-    global nodes 
-    nodes = d_host.get_nodes()
+    global _nodes_ 
+    _nodes_ = d_host.get_nodes()
     
-    global sync_levels
-    sync_levels = d_host.get_sync_level()
+    global _sync_levels_
+    _sync_levels_ = d_host.get_sync_level()
 
     global _times_
     _times_ = d_time.get_times()
@@ -31,21 +31,21 @@ def main_data():
 def main_enter():
     """ Declaracao dos objetos dos itens lidos em main_data."""
 
-    global node_objects
-    node_objects = list()
+    global _node_objects_
+    _node_objects_ = list()
     
-    global sync_level_objects
-    sync_level_objects = list()
+    global _sync_level_objects_
+    _sync_level_objects_ = list()
 
-    global time_objects 
-    time_objects = list()
+    global _time_objects_ 
+    _time_objects_ = list()
     
-    global config_objects 
-    config_objects = list()
+    global _config_objects_ 
+    _config_objects_ = list()
 
     # hosts.json, item NODES
-    for node in nodes:
-        line = (nodes[f'{node}'])
+    for node in _nodes_:
+        line = (_nodes_[f'{node}'])
         
         _name = node
         _ip = (line['IP'])
@@ -54,26 +54,26 @@ def main_enter():
         _edge = (line['EDGE'])
 
         # Append
-        node_objects.append(enter.Node( name = _name,
+        _node_objects_.append(enter.Node( name = _name,
                                         ip = _ip, 
                                         description = _description, 
                                         uid = _uid, 
                                         edge = _edge))
 
     # hosts.json, item SYNC_LEVEL    
-    for level in sync_levels:
-        line = (sync_levels[f'{level}'])
+    for level in _sync_levels_:
+        line = (_sync_levels_[f'{level}'])
 
         _members_uid = (line['UID'])
 
         # Append
-        sync_level_objects.append(enter.sync_level( level = level, 
+        _sync_level_objects_.append(enter.sync_level( level = level, 
                                                     uid_members = _members_uid))
 
     # time.json, todos os itens
     for time in _times_:
         line = (_times_[f'{time}'])
-        time_objects.append(enter.Time(time_data = line))
+        _time_objects_.append(enter.Time(time_data = line))
 
     # TODO: CRIAR MESMA LOGICA PARA CONFIG
 
@@ -96,7 +96,7 @@ def main_api():
     #cl.send_config()
 
 def main_network():
-    for node in nodes:
+    for node in _nodes_:
         print(node)
         #nw = network.host_alive(f'{node.}')
 
