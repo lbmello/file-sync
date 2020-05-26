@@ -10,10 +10,26 @@ from filesync import network
 #from filesync.api import server
 #from filesync import api
 
+# Variaveis globais para instancia  dos objetos de data
 d_host = str()
 d_time = str()
 d_config = str()
+d_domain = str()
 
+# Variaveis globais de data
+_nodes_ = None
+_sync_levels_ = None
+_times_ = None
+_global_config_ = None
+_share_config_ = None
+_domain_ = None
+
+# Variaveis globais de enter
+_node_objects_ = None
+_sync_level_objects_ = None
+_time_objects_ = None
+_config_objects_ = None
+_domain_objects_ = None
 
 def main_data():
     """Instancias de leitura dos arquivos de dados."""
@@ -21,6 +37,7 @@ def main_data():
     d_host = data.Host()
     d_time = data.Time()
     d_config = data.Config()
+    d_domain = data.Domain()
 
     global _nodes_ 
     _nodes_ = d_host.get_nodes()
@@ -36,6 +53,9 @@ def main_data():
 
     global _share_config_
     _share_config_ = d_config.get_share_config()
+
+    global _domain_
+    _domain_ = d_domain.get_domain()
     
 def main_enter():
     """ Declaracao dos objetos dos itens lidos em main_data."""
@@ -51,6 +71,9 @@ def main_enter():
     
     global _config_objects_ 
     _config_objects_ = list()
+
+    global _domain_objects_
+    _domain_objects_ = list()
 
     # hosts.json, item NODES
     for node in _nodes_:
@@ -176,11 +199,20 @@ def main_enter():
                                                 destiny = _destiny,
                                                 time = _time))
 
+    # domain.json, todos os itens    
+    for dom in _domain_:
+        line = _domain_[f'{dom}']
+
+        _domain_objects_.append(enter.domain())
+
 
 def main_internal():
+    # TODO: Passar usuário da tarefa
+    for time in _time_objects_:
+        internal.cron(time_obj=time, user='vagrant')
+
+def main_sync():
     ...
-    #ch = internal.Changes('001')
-    #print(ch.get_actual_state())
 
 def _flask_server(ip):
     ...
@@ -203,3 +235,4 @@ def main_network():
 if __name__ == "__main__":
     main_data()
     main_enter()
+    #main_internal()
