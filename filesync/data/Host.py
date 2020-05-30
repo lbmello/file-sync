@@ -3,10 +3,10 @@
 from json import load
 
 
-class Host():
+class Host:
     """Leitura do arquivo Hosts.JSON."""
 
-    _pathHost = 'conf/Hosts.JSON'
+    _pathHost = 'file-sync/conf/Hosts.JSON'
 
     def __init__(self):
         """Arquivo Hosts.JSON é lido."""

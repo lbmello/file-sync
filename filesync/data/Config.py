@@ -3,10 +3,10 @@
 from json import load
 
 
-class Config():
+class Config:
     """Leitura do arquivo Config.JSON."""
     
-    _path_config = 'conf/Config.JSON'
+    _path_config = 'file-sync/conf/Config.JSON'
 
     def __init__(self):
         """Arquivo Config.JSON é lido."""
