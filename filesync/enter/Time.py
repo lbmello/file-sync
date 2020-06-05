@@ -10,6 +10,8 @@ class Time:
     def __init__(self, time_data):
         self.time_data = time_data
 
+        self.name = time_data['NAME']
+
         (
             self.operator,
             self.date, 
@@ -20,13 +22,13 @@ class Time:
             self.day_of_week, 
             self.special
 
-        ) = self._get_formated_time(time_data = time_data)        
+        ) = self.get_formated_time()        
     
 
-    def _get_formated_time(self, time_data):
+    def get_formated_time(self):
         """ Formata e retorna entradas de tempo no padrao crontab."""
         
-        _time = time_data
+        _time = self.time_data
 
         _date = '*'
         _operator = '*'

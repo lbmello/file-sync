@@ -7,12 +7,10 @@
         "SYNC_LEVEL" : "0",
         "NODE" : "MASTER",
         "SOURCE" : "/tmp/share",
-        "USER" : "root
-        ",
+        "USER" : "root",
         "DESTINY" : "/tmp/share",
         "TIME": "DEFAULT"
     },
-
     "SHARE": [
         {
             "ID" : "001",
@@ -23,23 +21,49 @@
             "SYNC_LEVEL" : "0",
             "NODE" : "MASTER",
             "SOURCE" : "/tmp/sharemod",
-            "USER" : "vagrant",
+            "USER" : "lucas",
             "DESTINY" : "/tmp/rsync/",
-            "TIME" : "TIME_LAB"
+            "TIME" : "LAB"
 
         },
         {
             "ID" : "002", 
-            "NAME" : "Share_Teste1",
+            "NAME" : "Share_TST02",
             "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
             "AUTHOR" : "LBMELLO",
             "ENVIROMENT" : "LINUX",
             "SYNC_LEVEL" : "0",
             "NODE" : "MASTER",
             "SOURCE" : "/tmp/sharemod2",
-            "USER" : "vagrant",
+            "USER" : "lucas",
             "DESTINY" : "/tmp/rsync/",
-            "TIME" : "TIME_LAB"            
+            "TIME" : "SPECIFIC_DAY"            
+        }, 
+        {
+            "ID" : "003", 
+            "NAME" : "Share_TST03",
+            "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
+            "AUTHOR" : "LBMELLO",
+            "ENVIROMENT" : "LINUX",
+            "SYNC_LEVEL" : "0",
+            "NODE" : "MASTER",
+            "SOURCE" : "/tmp/sharemod2",
+            "USER" : "lucas",
+            "DESTINY" : "/tmp/rsync/",
+            "TIME" : "DEFAULT"            
+        },
+        {
+            "ID" : "004", 
+            "NAME" : "Share_TST05",
+            "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
+            "AUTHOR" : "LBMELLO",
+            "ENVIROMENT" : "LINUX",
+            "SYNC_LEVEL" : "0",
+            "NODE" : "MASTER",
+            "SOURCE" : "/tmp/sharemod2",
+            "USER" : "lucas",
+            "DESTINY" : "/tmp/rsync/",
+            "TIME" : "TESTE"            
         }
     ]
 }

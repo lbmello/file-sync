@@ -1,57 +1,15 @@
 {
     "NODES":{
-        "SRV-FILE":{    
-            "IP": "172.10.0.10",
-            "DESCRIPTION": "SERVIDOR DE ARQUIVOS NO SYNC LEVEL 0.",
+        "blackipa":{    
+            "IP": "10.0.0.1",
+            "DESCRIPTION": "Servidor",
             "UID": "0001",
             "EDGE": ""
         },
-        "CLIENT02":{
-            "IP": "172.10.0.2",
-            "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 1",
+        "AN2E":{
+            "IP": "10.0.0.10",
+            "DESCRIPTION": "CLIENTE AN2E",
             "UID": "0002",
-            "EDGE": ""
-        },
-        "CLIENT03":{
-            "IP": "172.10.0.3",
-            "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 1",
-            "UID": "0003",
-            "EDGE": ""
-        },
-        "CLIENT04":{
-            "IP": "172.10.0.4",
-            "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 2",
-            "UID": "0004",
-            "EDGE": ""
-        },
-        "CLIENT05":{
-            "IP": "172.10.0.5",
-            "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 2",
-            "UID": "0005",
-            "EDGE": ""
-        },
-        "CLIENT06":{
-            "IP": "172.10.0.6",
-            "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 3",
-            "UID": "0006",
-            "EDGE": ""
-        },
-        "CLIENT07":{
-            "IP": "172.10.0.7",
-            "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 4",
-            "UID": "0007",
-            "EDGE": ""
-        },
-        "CLIENT08":{
-            "IP": "172.10.0.8",
-            "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 4",
-            "UID": "0008",
-            "EDGE": ""
-        },
-        "CLIENT09":{
-            "IP": "172.10.0.9",
-            "DESCRIPTION": "CLIENTE TESTE NO SYNC LEVEL 5",
-            "UID": "0009",
             "EDGE": ""
         }
     },

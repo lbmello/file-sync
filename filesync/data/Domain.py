@@ -6,7 +6,7 @@ from json import load
 class Domain:
     """Leitura do arquivo Domain.JSON."""
 
-    pathTime = 'conf/Domain.JSON'
+    pathTime = 'file-sync/conf/Domain.JSON'
 
     def __init__(self):
         """Arquivo Domain.JSON é lido."""

@@ -1,20 +1,45 @@
 """Classe de interface com o Crontab."""
 
-#from crontab import CronTab
+from crontab import CronTab
 
-from .Time import Time
 
-class Cron():
+class cron:
     """Classe de interface com o Crontab."""
 
-    default_user = 'lucas'
+    # TEMP
+    command = '/bin/echo lala'
 
-    def __init__(self, id_time):
-        _time = Time()
+    def __init__(self, time_obj, user):
+        self.time_object = time_obj
+        self.user = user
         
-        self.operator, self.date, self.minute, self.hour, self.day_month, self.month_of_year, self.day_of_week, self.special = _time.get_time(id_time)
+        (
 
-        self.crontab = CronTab(user=Cron.default_user)
+            self.operator, 
+            self.date, 
+            self.minute, 
+            self.hour, 
+            self.day_month, 
+            self.month_of_year, 
+            self.day_of_week, 
+            self.special
+
+        ) = self.time_object.get_formated_time()
+
+        self.crontab = CronTab(user = self.user)
+
+        print(
+
+            self.operator, 
+            self.date, 
+            self.minute, 
+            self.hour, 
+            self.day_month, 
+            self.month_of_year, 
+            self.day_of_week, 
+            self.special
+
+        )
 
 
     def set_crontab_every(self, command):
@@ -22,7 +47,7 @@ class Cron():
         
         _cron = f'{self.minute} {self.hour} {self.day_month} {self.month_of_year} {self.day_of_week}'
 
-        '''if self.minute != '*':
+        if self.minute != '*':
             _cron = f'{self.minute} * * * *'
 
         if self.hour != '*':
@@ -35,7 +60,7 @@ class Cron():
             _cron = f'* * * {self.month_of_year} *'
 
         if self.day_of_week != '*':
-            _cron = f'* * * * {self.day_of_week[0]}'''
+            _cron = f'* * * * {self.day_of_week[0]}'
 
         job.setall(_cron)
         
@@ -70,16 +95,16 @@ class Cron():
 
     def set_crontab_all(self, command):
         if self.operator == '--every--':
-            Cron.set_crontab_every(self, command)
+            cron.set_crontab_every(self, command)
             
         if self.operator == '--in--':
-            Cron.set_crontab_in(self, command)
+            cron.set_crontab_in(self, command)
 
         if self.operator == '--special--':
-            Cron.set_crontab_special(self, command)
+            cron.set_crontab_special(self, command)
 
         else:
-            Cron.clear_crontab(self)
+            cron.clear_crontab(self)
 
     
     def clear_crontab(self):
