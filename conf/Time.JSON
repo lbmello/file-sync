@@ -2,8 +2,9 @@
     "DEFAULT":{
         "NAME": "DEFAULT",
         "SCHEDULE": "MTWTFSS",
-        "OPERATOR": "SPECIAL",
-        "FREQUENCY": "HOURLY"
+        "OPERATOR": "EVERY",
+        "FREQUENCY": "3",
+        "TIME_UNITY":  "HRS"
     },
 
     "LAB":{
@@ -19,14 +20,21 @@
         "SCHEDULE": "_______",
         "OPERATOR": "IN",
         "TIME_UNITY":  "SPECIFIC_DAY",
-        "FREQUENCY": "12/01/2020"
+        "FREQUENCY": "12/31/2021"
     },
 
     "TIME3":{
         "NAME": "TESTE",
         "SCHEDULE": "M______",
         "OPERATOR": "SPECIAL",
-        "FREQUENCY": ""
+        "FREQUENCY": "DAILY"
+    },
+
+    "TIME4":{
+        "NAME": "24x7&1HS",
+        "SCHEDULE": "MTWTFSS",
+        "OPERATOR": "SPECIAL",
+        "FREQUENCY": "HOURLY"
     }
 }
 

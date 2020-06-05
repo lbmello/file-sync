@@ -1,16 +1,22 @@
-"""Classe de interface com o Crontab."""
+"""Classe de interface com o Crontab do Linux."""
+
+from subprocess import run
 
 from crontab import CronTab
 
 
 class cron:
-    """Classe de interface com o Crontab."""
+    """Classe de interface com o Crontab do Linux."""
 
-    # TEMP
-    command = '/bin/echo lala'
 
     def __init__(self, time_obj, user):
+        """ 
+        time_obj, objeto de Time, declarado em enter.Time
+        user, atributo de Config, declarado em enter.Config
+        """
+
         self.time_object = time_obj
+
         self.user = user
         
         (
@@ -28,21 +34,27 @@ class cron:
 
         self.crontab = CronTab(user = self.user)
 
-        print(
 
-            self.operator, 
-            self.date, 
-            self.minute, 
-            self.hour, 
-            self.day_month, 
-            self.month_of_year, 
-            self.day_of_week, 
-            self.special
+    def set_crontab_all(self, command):
+        """ Verifica entrada de self.operator e executa as funcoes de cada operador."""
 
-        )
+        if self.operator == '--every--':
+            cron.set_crontab_every(self, command)
+            
+        if self.operator == '--in--':
+            cron.set_crontab_in(self, command)
+
+        if self.operator == '--special--':
+            cron.set_crontab_special(self, command)
+
+        else:
+            return f'nao tratado'
+            #cron.clear_crontab()
 
 
     def set_crontab_every(self, command):
+        """ Cria o crontab do operador --every--."""
+
         job  = self.crontab.new(command=command)
         
         _cron = f'{self.minute} {self.hour} {self.day_month} {self.month_of_year} {self.day_of_week}'
@@ -60,13 +72,16 @@ class cron:
             _cron = f'* * * {self.month_of_year} *'
 
         if self.day_of_week != '*':
-            _cron = f'* * * * {self.day_of_week[0]}'
+            _cron = f'* * * * {self.day_of_week}'
 
         job.setall(_cron)
         
         self.crontab.write()
 
+
     def set_crontab_special(self, command):
+        """ Cria o crontab do operador --special--."""
+
         job  = self.crontab.new(command=command)
 
         if self.special == '@hourly':
@@ -86,33 +101,19 @@ class cron:
 
         self.crontab.write()
 
+
     def set_crontab_in(self, command):
-        job  = self.crontab.new(command=command)
+        """ Cria o crontab do operador --in--."""
+
+        job  = self.crontab.new(command = command)
 
         job.setall(self.date)
 
         self.crontab.write()
 
-    def set_crontab_all(self, command):
-        if self.operator == '--every--':
-            cron.set_crontab_every(self, command)
-            
-        if self.operator == '--in--':
-            cron.set_crontab_in(self, command)
 
-        if self.operator == '--special--':
-            cron.set_crontab_special(self, command)
-
-        else:
-            cron.clear_crontab(self)
-
-    
-    def clear_crontab(self):
-        pass
-
-if __name__ == "__main__":
-    pass
-    #teste = Cron('LAB')
-    #teste.set_crontab_all('/bin/echo')
-    #teste.clear_crontab()
-    #parei antes de modularization aqui
+    @classmethod
+    def clear_crontab(cls):
+        """ Limpa arquivo de crontab do usuario."""
+        
+        run('crontab -r', shell = True)

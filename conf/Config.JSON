@@ -14,7 +14,7 @@
     "SHARE": [
         {
             "ID" : "001",
-            "NAME" : "Share_TST01", 
+            "NAME" : "TST01", 
             "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
             "AUTHOR" : "LBMELLO",
             "ENVIROMENT" : "LINUX",
@@ -23,12 +23,12 @@
             "SOURCE" : "/tmp/sharemod",
             "USER" : "lucas",
             "DESTINY" : "/tmp/rsync/",
-            "TIME" : "LAB"
+            "TIME" : "24x7&1HS"
 
         },
         {
             "ID" : "002", 
-            "NAME" : "Share_TST02",
+            "NAME" : "TST02",
             "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
             "AUTHOR" : "LBMELLO",
             "ENVIROMENT" : "LINUX",
@@ -41,7 +41,7 @@
         }, 
         {
             "ID" : "003", 
-            "NAME" : "Share_TST03",
+            "NAME" : "TST03",
             "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
             "AUTHOR" : "LBMELLO",
             "ENVIROMENT" : "LINUX",
@@ -54,7 +54,7 @@
         },
         {
             "ID" : "004", 
-            "NAME" : "Share_TST05",
+            "NAME" : "TST04",
             "DESCRIPTION" : "Teste_realizado_no_Projeto_FileSync",
             "AUTHOR" : "LBMELLO",
             "ENVIROMENT" : "LINUX",

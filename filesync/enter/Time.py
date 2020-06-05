@@ -42,7 +42,7 @@ class Time:
         """ Operador EVERY."""
         if _time['OPERATOR'] == 'EVERY':
             _operator = '--every--'
-            
+
             # A CADA MINUTO
             if _time['TIME_UNITY'] == 'MIN':
                 _minute = _time['FREQUENCY']
@@ -53,7 +53,7 @@ class Time:
 
             # A CADA DIA
             if _time['TIME_UNITY'] == 'DAY':
-                _hour = _time['FREQUENCY']
+                _day_month = _time['FREQUENCY']
         
             # A CADA MÊS    
             if _time['TIME_UNITY'] == 'MTH':
@@ -116,7 +116,6 @@ class Time:
         conf/Time.JSON e retorna lista (int) com os respectivos dias, no
         formato aceito pelo crontab."""
         days = json_days
-
         days = [days[start:start+1] for start in range(0, len(days), 1)]
 
         _monday = days[0].upper()
@@ -176,6 +175,7 @@ class Time:
         elif _sunday == "_":
             pass
         else:
-            raise ValueError("Entrada inválida!")         
+            raise ValueError("Entrada inválida!")  
         
-        return _new_date
+        # TODO: Alterar envio do dado no formato do cron, nao em lista
+        return 1
