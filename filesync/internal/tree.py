@@ -1,36 +1,29 @@
-"""Módulo que que retorna a árvore de diretórios e arquivos do share_id 
-repassado em formato str."""
+"""Modulo que que retorna a arvore de diretorios e arquivos do share."""
 
 import os
 
 from ..data.Config import Config
 
-class Tree():
-    """Módulo que que retorna a árvore de diretórios e arquivos do share_id 
-    repassado em formato str."""
+class Tree:
+    """Modulo que que retorna a arvore de diretorios e arquivos do share."""
 
-    def __init__(self, share_id=str):
-        self.share_id = share_id
+    def __init__(self, source):
+        """source, Config.JSON > SHARE:SOURCE"""
 
-        _config = Config()
+        self.source = source
 
-        _shares = _config.get_share_config()
-        
-        for _share in _shares:
-            if _share['ID'] == self.share_id:
-                                
-                source = (_share['SOURCE'])
+        self.tree = list()
+        self.make_tree() 
 
-        self.tree = []
-
-
-        for root, dirs, files in os.walk(top=source, topdown=True):              
-            self.tree.append({'source':root, 'files': files})
-    
 
     def get_tree(self):
-        """Retorna árvore completa em formato de lista com dict aninhado."""
+        """Retorna arvore completa em formato de lista com dict aninhado."""
+        
         return self.tree
 
 
-        
+    def make_tree(self):
+        """ Funcao interna usada para criar a arvore."""
+
+        for root, _ , files in os.walk(top=self.source, topdown=True):              
+            self.tree.append({'source':root, 'files': files})

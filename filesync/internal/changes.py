@@ -20,6 +20,19 @@ class Changes:
         self.update_tree()
         self.get_checksum()
 
+
+    def update_tree(self):
+        """Reseta self.tree com dados do objeto de tree."""
+
+        self.tree = self.tree_obj.get_tree()
+
+    def get_checksum(self):
+        """Pega tree instanciado e gera hash dos arquivos.
+
+        Salva dados no formato:
+        {'source': 'path', 'file': 'file_name', 'checksum': 'MD5_checksum'}
+        """
+
         for folder in self.tree:
             _source = folder['source']
             _files = folder['files']
@@ -30,8 +43,6 @@ class Changes:
 
                     try:
                         checksum = hashlib.md5((open_file.read()).encode()).hexdigest()
-
-                        print(f'hashs lidas com sucesso')
                     
                     except UnicodeDecodeError:
                         print(f'Erro no decode de {_file}')
@@ -41,16 +52,23 @@ class Changes:
                                                'checksum': checksum})
 
 
-                    open_file.close()    
-        
+                    open_file.close()
 
-    def update_tree(self):
-        self.tree = self.tree_obj.get_tree()
+        self._set_changes_file()
 
-    def get_checksum(self):
-        ...
 
     def get_actual_state(self):
+        """Retorna se True se o diretorio .fs foi criado no share."""
+
         return self.checksum_files
 
-    # TODO: Criar classe que leia os dados de algum documento JSON com o ultimo estado dos arquivos para comparacao. 
+
+    def _set_changes_file(self):
+        """Cria arquivo CHANGES.json em .fs de cada share."""
+
+        ch_file = open(f'{self.share}/.fs/CHANGES.json', 'w+')
+        
+        for line in self.checksum_files:
+            ch_file.write(f'{line}')
+
+        ch_file.close()
