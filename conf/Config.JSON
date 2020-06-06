@@ -47,7 +47,7 @@
             "ENVIROMENT" : "LINUX",
             "SYNC_LEVEL" : "0",
             "NODE" : "MASTER",
-            "SOURCE" : "/tmp/sharemod2",
+            "SOURCE" : "/tmp/sharemod3",
             "USER" : "lucas",
             "DESTINY" : "/tmp/rsync/",
             "TIME" : "DEFAULT"            
@@ -60,7 +60,7 @@
             "ENVIROMENT" : "LINUX",
             "SYNC_LEVEL" : "0",
             "NODE" : "MASTER",
-            "SOURCE" : "/tmp/sharemod2",
+            "SOURCE" : "/tmp/sharemod4",
             "USER" : "lucas",
             "DESTINY" : "/tmp/rsync/",
             "TIME" : "TESTE"            

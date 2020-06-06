@@ -1,12 +1,12 @@
-"""Módulo para identificar quando existiu alteração em algum share."""
+"""Módulo para identificar quando existiu alteracao em algum share."""
 
 import hashlib
 
 from ..data.Config import Config
-from .Tree import Tree
+from .tree import Tree
 
-class Changes():
-    """Módulo para identificar quando existiu alteração em algum share."""
+class Changes:
+    """Modulo para identificar quando existiu alteracao em algum share."""
 
     def __init__(self, share_id=str):
         """Inicializador de Changes. Exige share_id em formato str."""
@@ -42,7 +42,7 @@ class Changes():
     def get_actual_state(self):
         return self.checksum_files
 
-    # TODO: Criar classe que leia os dados de algum documento JSON com o ultimo estado dos arquivos para comparação. 
+    # TODO: Criar classe que leia os dados de algum documento JSON com o ultimo estado dos arquivos para comparacao. 
 
 if __name__ == "__main__":
     teste = Changes('001')
