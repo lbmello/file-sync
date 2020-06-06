@@ -8,16 +8,17 @@ from .tree import Tree
 class Changes:
     """Modulo para identificar quando existiu alteracao em algum share."""
 
-    def __init__(self, share_id=str):
-        """Inicializador de Changes. Exige share_id em formato str."""
+    def __init__(self, source):
+        """source, Config.JSON > SHARE:SOURCE"""
         
-        self.share = share_id
-
-        # Instância de Tree
-        _tree_obj = Tree(f'{self.share}')
-        self.tree = _tree_obj.get_tree()
-        
+        self.share = source
         self.checksum_files = []
+
+        # Instancia de Tree
+        self.tree_obj = Tree(f'{self.share}')
+        
+        self.update_tree()
+        self.get_checksum()
 
         for folder in self.tree:
             _source = folder['source']
@@ -29,6 +30,8 @@ class Changes:
 
                     try:
                         checksum = hashlib.md5((open_file.read()).encode()).hexdigest()
+
+                        print(f'hashs lidas com sucesso')
                     
                     except UnicodeDecodeError:
                         print(f'Erro no decode de {_file}')
@@ -37,12 +40,17 @@ class Changes:
                                                'file': _file,
                                                'checksum': checksum})
 
-                    open_file.close()
+
+                    open_file.close()    
+        
+
+    def update_tree(self):
+        self.tree = self.tree_obj.get_tree()
+
+    def get_checksum(self):
+        ...
 
     def get_actual_state(self):
         return self.checksum_files
 
     # TODO: Criar classe que leia os dados de algum documento JSON com o ultimo estado dos arquivos para comparacao. 
-
-if __name__ == "__main__":
-    teste = Changes('001')

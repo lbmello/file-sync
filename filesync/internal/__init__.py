@@ -19,25 +19,28 @@ from ..enter import _config_objects_
 cron.clear_crontab()
 
 _cron_objs_ = list()
-_folder_objects_ = list()
+_folder_objs_ = list()
 
 for time in _time_objects_:
     for config in _config_objects_:
 
         if time.name == config.time:
             # Instancia de cron
-            cron_object = cron( time_obj = time, user = config.user)
+            cron_object = cron(time_obj = time, user = config.user)
             cron_object.set_crontab_all(command = f'file-sync share {config.name} sync')
             
             _cron_objs_.append(cron_object)
 
 ## Alteracoes
 
-
 for config in _config_objects_:
     # Instancia de folder
-    folder_object = folder(config.source)
+    folder_object = folder(source = config.source)
 
-    _folder_objects_.append(folder_object)
+    _folder_objs_.append(folder_object)
+
+    # Instancia de Changes
+    changes_object = Changes(source = config.source)
+    print(changes_object.get_actual_state())
 
     
