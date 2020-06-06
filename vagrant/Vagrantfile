@@ -6,19 +6,18 @@ vmSO = "centos/7-2020"
 ram = 256
 
 # Configuração da pasta sincronizada
-syncedFolderConf = false
 syncedFolderOrigin = '/home/lucas/Documents/GitHub/file-sync/'
 syncedFolderDestiny = '/home/filesync/'
 
 # Hosts da rede
 hosts = [
-  { :hostname => 'AN1E', :ip_v => '177.166.0.10', :ip => '10.0.0.10', :box => vmSO },
-  { :hostname => 'AN2E', :ip_v => '177.166.1.10', :ip => '10.0.0.11', :box => vmSO },
-  { :hostname => 'AN3E', :ip_v => '177.166.2.10', :ip => '10.0.0.12', :box => vmSO }, 
-  { :hostname => 'AS1E', :ip_v => '200.225.0.10', :ip => '10.0.0.13', :box => vmSO },
-  { :hostname => 'AS2E', :ip_v => '200.225.1.10', :ip => '10.0.0.14', :box => vmSO },
-  { :hostname => 'AS4E', :ip_v => '200.225.2.10', :ip => '10.0.0.15', :box => vmSO },
-  { :hostname => 'AS3E', :ip_v => '200.225.3.10', :ip => '10.0.0.16', :box => vmSO }
+  { :hostname => 'AN1E', :ip => '10.0.0.10', :box => vmSO },
+  { :hostname => 'AN2E', :ip => '10.0.0.11', :box => vmSO },
+  { :hostname => 'AN3E', :ip => '10.0.0.12', :box => vmSO }, 
+  { :hostname => 'AS1E', :ip => '10.0.0.13', :box => vmSO },
+  { :hostname => 'AS2E', :ip => '10.0.0.14', :box => vmSO },
+  { :hostname => 'AS4E', :ip => '10.0.0.15', :box => vmSO },
+  { :hostname => 'AS3E', :ip => '10.0.0.16', :box => vmSO }
 ]
 
 Vagrant.configure("2") do |config|
