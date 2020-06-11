@@ -1,8 +1,6 @@
 
-from ..data.Host import Host
 
-
-class Node():
+class Node:
 
     def __init__(self, name=str,ip=str, description=str, uid=int, edge=str):
         
@@ -11,6 +9,3 @@ class Node():
         self.description = description
         self.uid = uid
         self.edge = edge
-
-if __name__ == "__main__":
-    pass
