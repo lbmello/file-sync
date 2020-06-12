@@ -13,7 +13,7 @@ class sync:
     def send_data(self):
         cmd = f'rsync -az {self.source} {self.user}@{self.ip}:{self.destiny}'
         print(cmd)
-        #status, output = subprocess.getstatusoutput(cmd)
+        status, output = subprocess.getstatusoutput(cmd)
 
-        #print('status ', status)
-        #print('output ', output)
+        print('status ', status)
+        print('output ', output)

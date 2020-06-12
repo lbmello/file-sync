@@ -2,6 +2,7 @@
 from fnmatch import fnmatch
 
 from ..internal import _sync_objects_
+from .python3_install import python3_install
 
 class cli():
     
@@ -17,6 +18,12 @@ class cli():
 
             if parameter[0] == '--init':
                 cli_init(parameter[1])
+
+            if parameter[0] == '--share':
+                cli_share(parameter[1])
+
+            if parameter[0] == '--install':
+                cli_install(parameter[1])
 
 
     def read_parameters(self):
@@ -46,5 +53,13 @@ class cli_init(cli):
 
 class cli_share(cli):
 
-    def __init__(self, argv):
+    def __init__(self, argument):
         ...
+
+class cli_install(cli):
+
+    def __init__(self, argument):
+        self.argument = argument
+
+        if self.argument == 'python3':
+            python3_install()

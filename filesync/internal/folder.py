@@ -9,8 +9,6 @@ class folder:
 
         self.path = source
         self.fs_folder = f'{self.path}/.fs'
-        print(self.fs_folder)
-
 
         if self.folder_exist() == False:
             print(self.create_folder())
@@ -25,10 +23,11 @@ class folder:
     def create_folder(self):
         """Cria o diretorio oculto do projeto."""
 
-        try:
-            os.makedirs(self.fs_folder)
+        #try:
+        os.makedirs(self.fs_folder)
 
-            raise f'diretorio {self.fs_folder} criado com sucesso!'
+            #print(f'diretorio {self.fs_folder} criado com sucesso!')
         
-        except:
-            raise f'erro nao tratado ao criar {self.fs_folder}'''
+        #except:
+        #    print(f'erro nao tratado ao criar {self.fs_folder})
+        
