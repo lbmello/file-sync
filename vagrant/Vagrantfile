@@ -7,7 +7,7 @@ ram = 256
 
 # Configuração da pasta sincronizada
 syncedFolderOrigin = '/home/lucas/Documents/GitHub/file-sync/'
-syncedFolderDestiny = '/home/filesync/'
+syncedFolderDestiny = '/home/file-sync/'
 
 # Hosts da rede
 hosts = [
@@ -27,7 +27,8 @@ Vagrant.configure("2") do |config|
       hostconfig.vm.hostname = host[:hostname] + '.box'
       hostconfig.vm.synced_folder syncedFolderOrigin, syncedFolderDestiny, disabled: false, type: "rsync"
       hostconfig.vm.network :private_network, ip: host[:ip]
-      hostconfig.vm.provision 'shell', path: '/home/lucas/Documents/GitHub/file-sync/vagrant/python3_install.py'
+      #hostconfig.vm.provision 'shell', path: '/home/lucas/Documents/GitHub/file-sync/vagrant/python3_install.py'
+      #hostconfig.vm.provision 'shell', path: '/home/lucas/Documents/GitHub/file-sync/vagrant/fs_config.py'
       memory = host[:ram] ? host[:ram] : ram;
       hostconfig.vm.provider :virtualbox do |vb|
         vb.cpus = 2

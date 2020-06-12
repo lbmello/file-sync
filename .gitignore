@@ -116,3 +116,7 @@ tools/**
 conf/**
 venv/**
 lab/**
+.vscode/settings.json
+vagrant/.vagrant/rgloader/loader.rb
+.gitignore
+vagrant/.vagrant/rgloader/loader.rb
