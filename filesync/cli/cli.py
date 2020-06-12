@@ -42,8 +42,16 @@ class cli():
 class cli_sync(cli):
     
     def __init__(self, argument):
+        self.argument = argument
+        
         for s in _sync_objects_:
-            if argument == s.name:
+
+            # Sincroniza um share | --sync NOME_SHARE
+            if self.argument == s.name:
+                s.send_data()
+            
+            # Sincroniza todos shares |--sync all
+            if self.argument == 'all':
                 s.send_data()
 
 class cli_init(cli):
