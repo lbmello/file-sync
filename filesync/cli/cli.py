@@ -2,6 +2,10 @@
 from fnmatch import fnmatch
 
 from ..internal import _sync_objects_
+from ..internal import _cron_objs_
+from ..internal import _config_objects_
+from ..internal import _node_objects_
+
 from .python3_install import python3_install
 
 class cli():
@@ -24,6 +28,9 @@ class cli():
 
             if parameter[0] == '--install':
                 cli_install(parameter[1])
+
+            if parameter[0] == '--crontab':
+                cli_crontab(parameter[1])
 
 
     def read_parameters(self):
@@ -54,15 +61,18 @@ class cli_sync(cli):
             if self.argument == 'all':
                 s.send_data()
 
+
 class cli_init(cli):
 
     def __init__(self, argument):
         ...
 
+
 class cli_share(cli):
 
     def __init__(self, argument):
         ...
+
 
 class cli_install(cli):
 
@@ -71,3 +81,19 @@ class cli_install(cli):
 
         if self.argument == 'python3':
             python3_install()
+
+
+class cli_crontab(cli):
+    
+    def __init__(self, argument):
+        self.argument = argument
+
+        for c in _cron_objs_:
+            # Adc uma entrada de crontab | --crontab NOME_SHARE
+            if self.argument == c.name:
+                c.set_crontab_all(command = f'file-sync --sync {self.argument}')
+            
+            # Adc todas as tarefas no crontab | --crontab all
+            if self.argument == 'all':
+                for config in _config_objects_:
+                    c.set_crontab_all(command = f'file-sync --sync {config.name}')

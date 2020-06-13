@@ -1,0 +1,1 @@
+"""Modulo que gravara dados em Hosts.JSON."""

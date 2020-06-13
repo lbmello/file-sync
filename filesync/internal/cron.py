@@ -9,7 +9,7 @@ class cron:
     """Classe de interface com o Crontab do Linux."""
 
 
-    def __init__(self, time_obj, user):
+    def __init__(self, time_obj, user, name):
         """ 
         time_obj, objeto de Time, declarado em enter.Time
         user, atributo de Config, declarado em enter.Config
@@ -18,6 +18,7 @@ class cron:
         self.time_object = time_obj
 
         self.user = user
+        self.name = name
         
         (
 
