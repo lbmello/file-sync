@@ -29,7 +29,7 @@ for time in _time_objects_:
 
         if time.name == config.time:
             # Instancia de cron
-            cron_object = cron(time_obj=time, user=config.user)
+            cron_object = cron(time_obj=time, user=config.user, name=config.name)
             cron_object.set_crontab_all(command = f'file-sync --sync {config.name}')
             
             _cron_objs_.append(cron_object)
