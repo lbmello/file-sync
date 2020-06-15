@@ -1,7 +1,6 @@
 """Leitura do arquivo Host.JSON."""
 
-from json import load
-
+import json
 
 class Host:
     """Leitura do arquivo Hosts.JSON."""
@@ -11,8 +10,7 @@ class Host:
     def __init__(self):
         """Arquivo Hosts.JSON é lido."""
         with open(Host._pathHost, 'r') as file:
-            self.hosts = load(file)
-
+            self.hosts = json.load(file)
     
     def get_sync_level(self):
         """Retorna todos valores de SYNC_LEVEL em Hosts.JSON."""
@@ -37,6 +35,3 @@ class Host:
     def size(self):
         """Retorna contagem em inteiro dos nodes."""
         return(len(self.hosts))
-
-if __name__ == '__main__':
-    ...

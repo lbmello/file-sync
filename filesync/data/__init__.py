@@ -2,8 +2,10 @@
 
 from .Time import Time
 from .Config import Config
-from .Host import Host
+from .Host import Host as read_Host
 from .Domain import Domain
+
+from .write import Host as write_Host
 
 
 # Variaveis globais de data
@@ -16,10 +18,12 @@ _domain_ = None
 
 
 def main():
-    d_host = Host()
+    d_host = read_Host()
     d_time = Time()
     d_config = Config()
     d_domain = Domain()
+
+    # TODO: Adicionar fechamento dos arquivos apos leitura
 
     global _nodes_
     _nodes_ = d_host.get_nodes()
