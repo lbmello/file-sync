@@ -6,6 +6,8 @@ from ..internal import _cron_objs_
 from ..internal import _config_objects_
 from ..internal import _node_objects_
 
+from ..data.write import Host as write_hosts
+
 from .python3_install import python3_install
 
 class cli():
@@ -31,6 +33,9 @@ class cli():
 
             if parameter[0] == '--crontab':
                 cli_crontab(parameter[1])
+
+            if parameter[0] == '--host':
+                cli_hosts(parameter[1])
 
 
     def read_parameters(self):
@@ -97,3 +102,24 @@ class cli_crontab(cli):
             if self.argument == 'all':
                 for config in _config_objects_:
                     c.set_crontab_all(command = f'file-sync --sync {config.name}')
+
+
+class cli_hosts(cli):
+
+    def __init__(self, argument):
+        self.argument = argument
+
+        self.node = write_hosts()
+
+        if self.argument == 'add':
+            _hostname = str(input('Informe o Nome do Host: '))
+            _ip = str(input('Informe o IP do Host: '))
+            _description = str(input('Informe alguma descriçao do Host: '))
+            _uid = str(input('Informe o UID do Host: '))
+            _edge = ''
+
+            self.node.set_host(name = _hostname,
+                                ip = _ip,
+                                description = _description,
+                                uid = _uid,
+                                edge = _edge)

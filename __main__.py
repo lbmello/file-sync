@@ -6,6 +6,7 @@ from .filesync import enter
 # from .filesync import exit
 from .filesync import internal
 from .filesync.cli import cli
+from .filesync.api import server, client
 #from .filesync import network
 # from .filesync import sync
 # from .filesync.api import server
