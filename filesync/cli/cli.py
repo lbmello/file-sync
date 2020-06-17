@@ -7,6 +7,7 @@ from ..internal import _config_objects_
 from ..internal import _node_objects_
 
 from ..data.write import Host as write_hosts
+from ..data.write import Config as write_config
 
 from .python3_install import python3_install
 
@@ -36,6 +37,9 @@ class cli():
 
             if parameter[0] == '--host':
                 cli_hosts(parameter[1])
+
+            if parameter[0] == '--config':
+                cli_config(parameter[1])
 
 
     def read_parameters(self):
@@ -123,3 +127,36 @@ class cli_hosts(cli):
                                 description = _description,
                                 uid = _uid,
                                 edge = _edge)
+
+
+class cli_config(cli):
+
+    def __init__(self, argument):
+        self.argument = argument
+
+        self.config = write_config()
+
+        if self.argument == 'add':
+            _id = str(input('Informe o ID da config: ')),
+            _name = str(input('Informe o nome da config: ')),
+            _description = str(input('Informe a descricao: ')),
+            _author = str(input('Informe o autor: ')),
+            _enviroment = str(input('Informe o ambiente de execucao: ')),
+            _sync_level = str(input('Informe o sync level: ')),
+            _node = str(input('Informe o tipo de node: ')),
+            _source = str(input('Informe o diretorio de origem: ')),
+            _user = str(input('Informe o usuario para execucao: ')),
+            _destiny = str(input('Informe o diretorio de destino: ')),
+            _time = str(input('Informe o padrao de tempo: ')),
+
+            self.config.set_config( id = _id,
+                                    name = _name,
+                                    description = _description,
+                                    author = _author,
+                                    enviroment = _enviroment,
+                                    sync_level = _sync_level,
+                                    node = _node,
+                                    source = _source,
+                                    user = _user,
+                                    destiny = _destiny,
+                                    time = _time)

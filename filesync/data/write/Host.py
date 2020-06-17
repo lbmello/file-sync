@@ -1,6 +1,5 @@
 
 import json
-from pprint import pprint as pp
 
 class Host:
     """Gravacao do arquivo Hosts.JSON."""
