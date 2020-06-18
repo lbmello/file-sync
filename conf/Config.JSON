@@ -21,7 +21,7 @@
             "SYNC_LEVEL" : "0",
             "NODE" : "MASTER",
             "SOURCE" : "/tmp/sharemod",
-            "USER" : "lucas",
+            "USER" : "fs",
             "DESTINY" : "/tmp/rsync/",
             "TIME" : "24x7&1HS"
 
@@ -35,7 +35,7 @@
             "SYNC_LEVEL" : "0",
             "NODE" : "MASTER",
             "SOURCE" : "/tmp/sharemod2",
-            "USER" : "lucas",
+            "USER" : "fs",
             "DESTINY" : "/tmp/rsync/",
             "TIME" : "SPECIFIC_DAY"            
         }, 
@@ -48,7 +48,7 @@
             "SYNC_LEVEL" : "0",
             "NODE" : "MASTER",
             "SOURCE" : "/tmp/sharemod3",
-            "USER" : "lucas",
+            "USER" : "fs",
             "DESTINY" : "/tmp/rsync/",
             "TIME" : "DEFAULT"            
         },
@@ -61,7 +61,7 @@
             "SYNC_LEVEL" : "0",
             "NODE" : "MASTER",
             "SOURCE" : "/tmp/sharemod4",
-            "USER" : "lucas",
+            "USER" : "fs",
             "DESTINY" : "/tmp/rsync/",
             "TIME" : "TESTE"            
         }

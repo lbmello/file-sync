@@ -1,14 +1,14 @@
 {
     "NODES":{
-        "blackipa":{    
-            "IP": "10.0.0.1",
-            "DESCRIPTION": "Servidor",
+        "fs-01":{    
+            "IP": "192.168.15.100",
+            "DESCRIPTION": "cliente fs-01",
             "UID": "0001",
             "EDGE": ""
         },
-        "AN2E":{
-            "IP": "10.0.0.10",
-            "DESCRIPTION": "CLIENTE AN2E",
+        "fs-2":{
+            "IP": "192.168.15.100",
+            "DESCRIPTION": "cliente fs-02",
             "UID": "0002",
             "EDGE": ""
         }
