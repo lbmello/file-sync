@@ -9,6 +9,7 @@ from .changes import Changes
 #from .ssh import Ssh
 #from .tree import Tree
 from .sync import sync
+from .domain import domain
 
 # Variaveis globais
 from ..enter import _time_objects_
@@ -55,3 +56,5 @@ for config in _config_objects_:
 
         _sync_objects_.append(sync_object)
 
+# Domain
+dom = domain()

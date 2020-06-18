@@ -7,7 +7,7 @@ class Host:
     _pathHost = 'file-sync/conf/Hosts.JSON'
 
     def __init__(self):
-        """Arquivo Hosts.JSON é lido."""
+        """Modulo responsavel por gravar dados em Hosts.JSON."""
         
         _file = open(Host._pathHost, 'r')
         self.hosts = json.load(_file)
