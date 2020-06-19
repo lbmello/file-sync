@@ -5,6 +5,7 @@ import platform
 from ..enter.domain import domain as enter_domain
 from ..data.write.Host import Host as write_host
 from ..enter import _node_objects_
+from ..internal.localhost import localhost
 
 
 class domain:
@@ -25,7 +26,15 @@ class domain:
         ao ip conhecido para juntar-se."""
         
         if self.state != 'JOIN':
-            self.state = 'JOIN' # Escrever envio
+            localhost_obj = localhost()
+            
+            uri = f'http://{self.known_member}:8080/domain/join?domain_id={self.domain_id}&domain_name={self.name}&new_host_ip={localhost_obj.get_ip()}&new_host_description={localhost_obj.get_description()}&new_host_name={localhost_obj.get_name()}'
+            
+            response = requests.post(uri)
+
+            # TODO: Consolidar valor de JOIN no arquivo de configuracao de domain
+
+            return response            
 
 
     def join_domain(self, new_hostname, new_host_ip, new_host_description):
@@ -40,12 +49,13 @@ class domain:
                                 edge = '')
                             
         for node in _node_objects_:
+            print(platform.node(),node.name)
             if platform.node() != node.name:
                uri = f'http://{node.ip}:8080/hosts/?hostname={new_host_description}&ip={new_host_ip}&description={new_host_description}'
 
-               response = requests.get(uri)
+               response = requests.post(uri)
         
-        return f'{uri, response}sucesso ao ingressar no dominio.'
+        return f'sucesso ao ingressar no dominio.'
 
 
     def check_domain(self):

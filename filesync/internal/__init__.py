@@ -10,6 +10,7 @@ from .changes import Changes
 #from .tree import Tree
 from .sync import sync
 from .domain import domain
+from .localhost import localhost
 
 # Variaveis globais
 from ..enter import _time_objects_
