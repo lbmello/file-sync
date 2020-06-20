@@ -5,6 +5,7 @@ from ..internal import _sync_objects_
 from ..internal import _cron_objs_
 from ..internal import _config_objects_
 from ..internal import _node_objects_
+from ..internal.domain import domain
 
 from ..data.write import Host as write_hosts
 from ..data.write import Config as write_config
@@ -40,6 +41,9 @@ class cli():
 
             if parameter[0] == '--config':
                 cli_config(parameter[1])
+
+            if parameter[0] == '--domain':
+                cli_domain(parameter[1])
 
 
     def read_parameters(self):
@@ -160,3 +164,15 @@ class cli_config(cli):
                                     user = _user,
                                     destiny = _destiny,
                                     time = _time)
+
+class cli_domain:
+    
+    def __init__(self, argument):
+        self.argument = argument
+
+        if self.argument == 'create':
+            self.domain = domain()
+
+            _domain = str(input('Informe o nome do novo domnio: ')),
+
+            self.domain.create_domain(domain_name = _domain)
