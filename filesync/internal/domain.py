@@ -104,6 +104,12 @@ class domain:
         return (False, 'Membro nao pertence ao dominio.')
 
 
+    def get_domain_id(self):
+        """ Retorna self.domain_id."""
+
+        return self.domain_id
+
+
     def _write_domain_file(self):
         """ Funçao interna, usada para consisir dados no arquivo Domain.JSON."""
         

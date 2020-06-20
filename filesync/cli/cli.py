@@ -169,10 +169,12 @@ class cli_domain:
     
     def __init__(self, argument):
         self.argument = argument
+        self.domain = domain()
 
         if self.argument == 'create':
-            self.domain = domain()
-
             _domain = str(input('Informe o nome do novo domnio: ')),
 
             self.domain.create_domain(domain_name = _domain)
+
+        if self.argument == 'list':
+            print(self.domain.get_domain_id())
