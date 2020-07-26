@@ -3,7 +3,7 @@
     
 O sistema oferece uma solução para sincronia de arquivos digitais entre estações de trabalho ou servidores dentro de uma rede. Esta sincronia será realizada automaticamente através de tarefas de sincronia previamente configuradas pelo operador da ferramenta.
 
-Esta ferramenta foi desenvolvida e documentada como artigo final no curso de Redes de Computadores na Faculdade SENAC Porto Alegre. Para consulta do artigo em sua versão publicada no formato SCB, favor utilizar o link abaixo:
+Esta ferramenta foi desenvolvida e documentada como artigo final no curso de Redes de Computadores na Faculdade SENAC Porto Alegre. Para consulta do artigo em sua versão publicada no formato SBC, favor utilizar o link abaixo:
 
 [Artigo Filesync](https://github.com/lbmello/file-sync/blob/master/Artigo%20FileSync.pdf)
 
@@ -24,8 +24,8 @@ O projeto foi desenvolvido utilizando a linguagem de programação Python, mais 
 
 ## Instalação da Ferramenta
 
-```
-
+```sh
+git clone https://github.com/lbmello/file-sync
 ```
     
 ## Arquivos de Configuraçao da Ferramenta
